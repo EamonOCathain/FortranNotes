@@ -1,0 +1,1720 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://eamonocathain.github.io/FortranNotes/Fortran%20HLRS/Dynamic%20Data%2038394ba1bb06801695dcdc0ea9cc5c86/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Dynamic Data - Fortran HLRS Notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#dynamic-data" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Fortran HLRS Notes" class="md-header__button md-logo" aria-label="Fortran HLRS Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Fortran HLRS Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Dynamic Data
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Fortran HLRS Notes" class="md-nav__button md-logo" aria-label="Fortran HLRS Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Fortran HLRS Notes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Notes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Notes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Arithmetic%20Basics%2038094ba1bb068058b949c5f878eaa564/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arithmetic Basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Declaration%20of%20Variables%2038094ba1bb06801ab840c3a5f06aaa46/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Declaration of Variables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../If%20and%20Else%2038094ba1bb068028b475fa54f910cb48/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    If and Else
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Loops%2038094ba1bb06804ab400ccb6252c4b0a/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Loops
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Arrays%2038094ba1bb068047a6b8d5492b19afb7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arrays
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Functions%2038194ba1bb0680d69729ec69d7e35a77/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Subroutines%2038194ba1bb0680bf85edc8bae2a3166d/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Subroutines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Modules%2038194ba1bb0680daaa3bedcff442c0df/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contents
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-pointers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Pointers
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Pointers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#concept" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concept
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pointer-assignment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pointer Assignment
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#association-status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Association Status
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memory-leaks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Memory Leaks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pointer-arrays" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pointer Arrays
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linked-lists-and-trees" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Linked Lists and Trees
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#procedure-pointers-fortran-2003" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Procedure Pointers (Fortran 2003+)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pointer-functions-fortran-2008" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pointer Functions (Fortran 2008+)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#intent-with-pointers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Intent with Pointers
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-dynamic-data-four-approaches" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Dynamic Data — Four Approaches
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Dynamic Data — Four Approaches">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-pointer-arrays" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Pointer Arrays
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-allocatable-arrays-recommended" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Allocatable Arrays (Recommended)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#restrictions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Restrictions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generalized-allocation-typed-vs-sourced" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Generalized Allocation: Typed vs. Sourced
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#move_alloc-fortran-2003" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        move_alloc (Fortran 2003+)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enlarging-resizing-allocatable-arrays-fortran-2003" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enlarging / Resizing Allocatable Arrays (Fortran 2003+)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recursive-allocatable-components-fortran-2008" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recursive Allocatable Components (Fortran 2008)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-automatic-arrays" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Automatic Arrays
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-dynamic-length-characters-fortran-2003" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 Dynamic-Length Characters (Fortran 2003+)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-array-types-and-descriptors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Array Types and Descriptors
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Array Types and Descriptors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#array-shape-kinds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Array Shape Kinds
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#array-descriptors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Array Descriptors
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aesa-array-element-sequence-association" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AESA — Array Element Sequence Association
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#declaration-of-array-dummy-parameters-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Declaration of Array Dummy Parameters (summary)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-arrays-with-different-ranks-fortran-2018" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Arrays with Different Ranks (Fortran 2018+)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Arrays with Different Ranks (Fortran 2018+)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#assumed-rank-arrays" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Assumed-Rank Arrays
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#select-rank-construct-fortran-2018" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        select rank Construct (Fortran 2018+)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integer-arrays-for-rank-and-bounds-fortran-2023" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Integer Arrays for Rank and Bounds (Fortran 2023+)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-contiguous-attribute-fortran-2008" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Contiguous Attribute (Fortran 2008+)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-dynamic-derived-types-parametrized-types-fortran-2003" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Dynamic Derived Types / Parametrized Types (Fortran 2003+)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Dynamic Derived Types / Parametrized Types (Fortran 2003+)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parametrized-derived-types-pdt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parametrized Derived Types (PDT)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-array-syntax" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Array Syntax
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Array Syntax">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#whole-array-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Whole-Array Operations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#array-sections" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Array Sections
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#array-constructors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Array Constructors
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#where-masked-array-assignment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WHERE — Masked Array Assignment
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-performance-implications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Performance Implications
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Performance Implications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#general-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        General Rules
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#array-attribute-performance-ranking-daxpy-benchmark" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Array Attribute Performance Ranking (daxpy benchmark)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loop-unrolling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Loop Unrolling
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dimension-access-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dimension Access Patterns
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#structure-of-arrays-vs-array-of-structures" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Structure of Arrays vs Array of Structures
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="dynamic-data">Dynamic Data<a class="headerlink" href="#dynamic-data" title="Permanent link">&para;</a></h1>
+<h2 id="contents">Contents<a class="headerlink" href="#contents" title="Permanent link">&para;</a></h2>
+<ol>
+<li><a href="https://claude.ai/cowork/local_8a07cf96-7202-45f5-9aa9-41a983bfdbde#1-pointers">Pointers</a></li>
+<li><a href="https://claude.ai/cowork/local_8a07cf96-7202-45f5-9aa9-41a983bfdbde#2-dynamic-data--four-approaches">Dynamic Data — Four Approaches</a><ul>
+<li><a href="https://claude.ai/cowork/local_8a07cf96-7202-45f5-9aa9-41a983bfdbde#21-pointer-arrays">(1) Pointer Arrays</a></li>
+<li><a href="https://claude.ai/cowork/local_8a07cf96-7202-45f5-9aa9-41a983bfdbde#22-allocatable-arrays-recommended">(2) Allocatable Arrays</a></li>
+<li><a href="https://claude.ai/cowork/local_8a07cf96-7202-45f5-9aa9-41a983bfdbde#23-automatic-arrays">(3) Automatic Arrays</a></li>
+<li><a href="https://claude.ai/cowork/local_8a07cf96-7202-45f5-9aa9-41a983bfdbde#24-dynamic-length-characters-fortran-2003">(4) Dynamic-Length Characters</a></li>
+</ul>
+</li>
+<li><a href="https://claude.ai/cowork/local_8a07cf96-7202-45f5-9aa9-41a983bfdbde#3-array-types-and-descriptors">Array Types and Descriptors</a></li>
+<li><a href="https://claude.ai/cowork/local_8a07cf96-7202-45f5-9aa9-41a983bfdbde#4-arrays-with-different-ranks-fortran-2018">Arrays with Different Ranks (Fortran 2018+)</a></li>
+<li><a href="https://claude.ai/cowork/local_8a07cf96-7202-45f5-9aa9-41a983bfdbde#5-contiguous-attribute-fortran-2008">Contiguous Attribute (Fortran 2008+)</a></li>
+<li><a href="https://claude.ai/cowork/local_8a07cf96-7202-45f5-9aa9-41a983bfdbde#6-dynamic-derived-types--parametrized-types-fortran-2003">Dynamic Derived Types / Parametrized Types (Fortran 2003+)</a></li>
+<li><a href="https://claude.ai/cowork/local_8a07cf96-7202-45f5-9aa9-41a983bfdbde#7-array-syntax">Array Syntax</a></li>
+<li><a href="https://claude.ai/cowork/local_8a07cf96-7202-45f5-9aa9-41a983bfdbde#8-performance-implications">Performance Implications</a></li>
+</ol>
+<hr />
+<h2 id="1-pointers">1. Pointers<a class="headerlink" href="#1-pointers" title="Permanent link">&para;</a></h2>
+<h3 id="concept">Concept<a class="headerlink" href="#concept" title="Permanent link">&para;</a></h3>
+<ul>
+<li>A pointer in Fortran 90 is <strong>not a type</strong> — it is an <strong>attribute</strong> on any variable.</li>
+<li>Pointers store a <strong>descriptor</strong> (base address + shape + stride), not a raw memory address.</li>
+<li>Any variable to be pointed at must carry the <strong><code>target</code></strong> attribute.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">pointer</span><span class="w">  </span><span class="kd">::</span><span class="w"> </span><span class="n">ip</span><span class="p">,</span><span class="w"> </span><span class="n">iq</span>
+<span class="kt">real</span><span class="p">,</span><span class="w">    </span><span class="k">pointer</span><span class="w">  </span><span class="kd">::</span><span class="w"> </span><span class="n">rp</span>
+<span class="kt">real</span><span class="p">,</span><span class="w">    </span><span class="k">pointer</span><span class="w">  </span><span class="kd">::</span><span class="w"> </span><span class="n">p_feld</span><span class="p">(:)</span><span class="w">   </span><span class="c">! pointer to a 1-D array</span>
+
+<span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">target</span><span class="w">   </span><span class="kd">::</span><span class="w"> </span><span class="n">my_int</span>
+<span class="n">ip</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">my_int</span><span class="w">                     </span><span class="c">! pointer assignment</span>
+</code></pre></div>
+<h3 id="pointer-assignment">Pointer Assignment<a class="headerlink" href="#pointer-assignment" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>=&gt;</code> associates a pointer with a target (or another pointer).</li>
+<li>Regular <code>=</code> <strong>dereferences</strong> the pointer and copies the value.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">ip</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">iq</span><span class="w">          </span><span class="c">! ip now points to the same location as iq</span>
+<span class="n">ip</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="w">           </span><span class="c">! writes 5 through ip into the target</span>
+</code></pre></div>
+<h3 id="association-status">Association Status<a class="headerlink" href="#association-status" title="Permanent link">&para;</a></h3>
+<p>A pointer is in one of three states:</p>
+<table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Description</th>
+<th>How to reach</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Associated</strong></td>
+<td>Points to a valid target</td>
+<td><code>allocate(p)</code> or <code>p =&gt; target</code></td>
+</tr>
+<tr>
+<td><strong>Disassociated</strong></td>
+<td>Explicitly null</td>
+<td><code>nullify(p)</code> or <code>pointer :: p =&gt; null()</code></td>
+</tr>
+<tr>
+<td><strong>Undefined</strong></td>
+<td>After declaration without init</td>
+<td>(avoid — undefined behavior)</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">pointer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">p</span>
+<span class="k">allocate</span><span class="p">(</span><span class="n">p</span><span class="p">)</span><span class="w">           </span><span class="c">! now associated</span>
+<span class="k">nullify</span><span class="p">(</span><span class="n">p</span><span class="p">)</span><span class="w">            </span><span class="c">! now disassociated (but memory is leaked!)</span>
+<span class="k">deallocate</span><span class="p">(</span><span class="n">p</span><span class="p">)</span><span class="w">         </span><span class="c">! correct way to free memory</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">associated</span><span class="p">(</span><span class="n">p</span><span class="p">))</span><span class="w"> </span><span class="p">...</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">associated</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="k">target</span><span class="p">))</span><span class="w"> </span><span class="p">...</span><span class="w">   </span><span class="c">! checks if p points to target</span>
+</code></pre></div>
+<h3 id="memory-leaks">Memory Leaks<a class="headerlink" href="#memory-leaks" title="Permanent link">&para;</a></h3>
+<p><code>nullify</code> without <code>deallocate</code> causes a <strong>memory leak</strong> — the heap memory is orphaned. Always <code>deallocate</code> before <code>nullify</code> or reassignment if the pointer owns the memory.</p>
+<h3 id="pointer-arrays">Pointer Arrays<a class="headerlink" href="#pointer-arrays" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="k">pointer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">p</span><span class="p">(:)</span>
+<span class="k">allocate</span><span class="p">(</span><span class="n">p</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+<span class="c">! resize: allocate temp, copy, move</span>
+<span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="k">pointer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">tmp</span><span class="p">(:)</span>
+<span class="k">allocate</span><span class="p">(</span><span class="n">tmp</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
+<span class="n">tmp</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">10</span><span class="p">)</span>
+<span class="k">deallocate</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+<span class="n">p</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">tmp</span>
+</code></pre></div>
+<p>Pointer arrays:</p>
+<ul>
+<li>Live on the <strong>heap</strong></li>
+<li>Are <strong>not automatically deallocated</strong></li>
+<li>May be <strong>non-contiguous</strong> (e.g. after <code>p =&gt; arr(1:n:2)</code>)</li>
+</ul>
+<h3 id="linked-lists-and-trees">Linked Lists and Trees<a class="headerlink" href="#linked-lists-and-trees" title="Permanent link">&para;</a></h3>
+<p>Pointers enable recursive data structures:</p>
+<div class="highlight"><pre><span></span><code><span class="k">type </span><span class="n">list_node</span>
+<span class="w">  </span><span class="kt">real</span><span class="w">                        </span><span class="kd">::</span><span class="w"> </span><span class="k">value</span>
+<span class="k">  type</span><span class="p">(</span><span class="n">list_node</span><span class="p">),</span><span class="w"> </span><span class="k">pointer</span><span class="w">    </span><span class="kd">::</span><span class="w"> </span><span class="n">next</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nb">null</span><span class="p">()</span>
+<span class="k">end type</span>
+
+<span class="c">! Traversal</span>
+<span class="k">do while</span><span class="w"> </span><span class="p">(</span><span class="nb">associated</span><span class="p">(</span><span class="nb">link</span><span class="p">%</span><span class="n">next</span><span class="p">))</span>
+<span class="w">  </span><span class="nb">link</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nb">link</span><span class="p">%</span><span class="n">next</span>
+<span class="k">end do</span>
+</code></pre></div>
+<p>Binary trees use two pointer components (<code>left</code>, <code>right</code>) and a recursive subroutine with <code>recursive</code> keyword.</p>
+<h3 id="procedure-pointers-fortran-2003">Procedure Pointers (Fortran 2003+)<a class="headerlink" href="#procedure-pointers-fortran-2003" title="Permanent link">&para;</a></h3>
+<p>Pointers can point to procedures, enabling runtime dispatch:</p>
+<div class="highlight"><pre><span></span><code><span class="k">abstract interface</span>
+<span class="k">  function </span><span class="n">math_func</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="k">result</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">x</span>
+<span class="w">    </span><span class="kt">real</span><span class="w">             </span><span class="kd">::</span><span class="w"> </span><span class="n">res</span>
+<span class="w">  </span><span class="k">end function</span>
+<span class="k">end interface</span>
+
+<span class="k">procedure</span><span class="p">(</span><span class="n">math_func</span><span class="p">),</span><span class="w"> </span><span class="k">pointer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">fp</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nb">null</span><span class="p">()</span>
+<span class="n">fp</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nb">sin</span>
+<span class="k">print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">fp</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
+</code></pre></div>
+<ul>
+<li><code>nopass</code> — procedure pointer does not receive the object as a hidden argument.</li>
+<li><code>pass</code> / <code>pass(arg)</code> — type-bound procedure pointers pass the object.</li>
+</ul>
+<h3 id="pointer-functions-fortran-2008">Pointer Functions (Fortran 2008+)<a class="headerlink" href="#pointer-functions-fortran-2008" title="Permanent link">&para;</a></h3>
+<p>A function can return a pointer, allowing the call site to write through it:</p>
+<div class="highlight"><pre><span></span><code><span class="k">function </span><span class="n">get_element</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="k">result</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+<span class="w">  </span><span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="k">target</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">arr</span><span class="p">(:)</span>
+<span class="w">  </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">         </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span>
+<span class="w">  </span><span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="k">pointer</span><span class="w">               </span><span class="kd">::</span><span class="w"> </span><span class="n">p</span>
+<span class="w">  </span><span class="n">p</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">arr</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="k">end function</span>
+</code></pre></div>
+<h3 id="intent-with-pointers">Intent with Pointers<a class="headerlink" href="#intent-with-pointers" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th><code>intent</code></th>
+<th>Pointer itself</th>
+<th>Target</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>intent(in)</code></td>
+<td>Association cannot change</td>
+<td>Target readable</td>
+</tr>
+<tr>
+<td><code>intent(out)</code></td>
+<td>Association may change</td>
+<td>Target writable</td>
+</tr>
+<tr>
+<td><code>intent(inout)</code></td>
+<td>Association may change</td>
+<td>Target readable/writable</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="2-dynamic-data-four-approaches">2. Dynamic Data — Four Approaches<a class="headerlink" href="#2-dynamic-data-four-approaches" title="Permanent link">&para;</a></h2>
+<h3 id="21-pointer-arrays">2.1 Pointer Arrays<a class="headerlink" href="#21-pointer-arrays" title="Permanent link">&para;</a></h3>
+<p>See <a href="https://claude.ai/cowork/local_8a07cf96-7202-45f5-9aa9-41a983bfdbde#pointer-arrays">§1 Pointer Arrays</a>. Summary: flexible but error-prone — prefer allocatables.</p>
+<hr />
+<h3 id="22-allocatable-arrays-recommended">2.2 Allocatable Arrays (Recommended)<a class="headerlink" href="#22-allocatable-arrays-recommended" title="Permanent link">&para;</a></h3>
+<p>The preferred mechanism for dynamic memory in modern Fortran.</p>
+<div class="highlight"><pre><span></span><code><span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="k">dimension</span><span class="p">(:,:),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">a</span>
+<span class="k">allocate</span><span class="p">(</span><span class="n">a</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">200</span><span class="p">))</span>
+<span class="c">! ... use a ...</span>
+<span class="k">deallocate</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="w">   </span><span class="c">! explicit, or automatic at end of scope (Fortran 2003+)</span>
+</code></pre></div>
+<p><strong>Key advantages over pointer arrays:</strong></p>
+<ul>
+<li><strong>Auto-deallocated</strong> at end of scope (Fortran 2003+) — no memory leaks.</li>
+<li>Always <strong>contiguous</strong> in memory.</li>
+<li>Compiler can optimize more aggressively (no aliasing concerns).</li>
+<li>Can be used as <code>intent(out)</code> dummy arguments (auto-allocated by callee).</li>
+<li>Can be components of derived types.</li>
+</ul>
+<h3 id="restrictions">Restrictions<a class="headerlink" href="#restrictions" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>allocate(arr)</code> on an <strong>already-allocated</strong> array is a runtime error — must <code>deallocate</code> first.</li>
+<li><code>deallocate(arr)</code> on a <strong>not-allocated</strong> array is a runtime error.</li>
+<li>Cannot pass an array section or array constructor literal to an <code>allocatable</code> dummy argument; use <strong>assumed-shape</strong> (<code>dimension(:)</code>) instead.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c">! allocatable dummy:</span>
+<span class="k">subroutine </span><span class="n">up_a</span><span class="p">(</span><span class="n">alpha</span><span class="p">)</span>
+<span class="w">  </span><span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="k">dimension</span><span class="p">(:),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">alpha</span>
+<span class="k">end subroutine</span>
+
+<span class="c">! assumed-shape dummy (more flexible):</span>
+<span class="k">subroutine </span><span class="n">up_b</span><span class="p">(</span><span class="n">alpha</span><span class="p">)</span>
+<span class="w">  </span><span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="k">dimension</span><span class="p">(:)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">alpha</span>
+<span class="k">end subroutine</span>
+
+<span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="k">dimension</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">aa</span>
+<span class="k">call </span><span class="n">up_a</span><span class="p">(</span><span class="n">aa</span><span class="p">)</span><span class="w">         </span><span class="c">! ERROR — aa is not allocatable</span>
+<span class="k">call </span><span class="n">up_b</span><span class="p">(</span><span class="n">aa</span><span class="p">)</span><span class="w">         </span><span class="c">! OK</span>
+
+<span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="k">dimension</span><span class="p">(:),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">bb</span>
+<span class="k">allocate</span><span class="p">(</span><span class="n">bb</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
+<span class="k">call </span><span class="n">up_a</span><span class="p">(</span><span class="n">bb</span><span class="p">)</span><span class="w">         </span><span class="c">! OK</span>
+<span class="k">call </span><span class="n">up_a</span><span class="p">(</span><span class="n">bb</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">))</span><span class="w">    </span><span class="c">! ERROR — array section is not allocatable</span>
+<span class="k">call </span><span class="n">up_b</span><span class="p">(</span><span class="n">bb</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">))</span><span class="w">    </span><span class="c">! OK — treated as assumed shape</span>
+</code></pre></div>
+<h3 id="generalized-allocation-typed-vs-sourced">Generalized Allocation: Typed vs. Sourced<a class="headerlink" href="#generalized-allocation-typed-vs-sourced" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c">! Typed allocation (standard form):</span>
+<span class="k">allocate</span><span class="p">([</span><span class="k">type</span><span class="o">-</span><span class="n">spec</span><span class="w"> </span><span class="kd">::</span><span class="p">]</span><span class="w"> </span><span class="n">alloc</span><span class="o">-</span><span class="n">list</span><span class="w"> </span><span class="p">[,</span><span class="w"> </span><span class="nb">stat</span><span class="o">=</span><span class="nb">stat</span><span class="p">])</span>
+
+<span class="c">! Sourced allocation — copies shape AND values from source:</span>
+<span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="k">dimension</span><span class="p">(:)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">arr1</span><span class="p">,</span><span class="w"> </span><span class="n">arr2</span>
+<span class="k">allocate</span><span class="p">(</span><span class="n">arr2</span><span class="p">,</span><span class="w"> </span><span class="n">source</span><span class="o">=</span><span class="n">arr1</span><span class="p">)</span><span class="w">   </span><span class="c">! arr2 gets same shape and values as arr1</span>
+
+<span class="c">! Useful for polymorphic variables:</span>
+<span class="k">type</span><span class="p">(</span><span class="n">my_type</span><span class="p">),</span><span class="w"> </span><span class="k">dimension</span><span class="p">(:),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">arr</span>
+<span class="k">class</span><span class="p">(</span><span class="o">*</span><span class="p">),</span><span class="w"> </span><span class="k">allocatable</span><span class="p">,</span><span class="w"> </span><span class="k">dimension</span><span class="p">(:)</span><span class="w">      </span><span class="kd">::</span><span class="w"> </span><span class="n">flexible</span>
+<span class="k">allocate</span><span class="p">(</span><span class="n">flexible</span><span class="p">,</span><span class="w"> </span><span class="n">source</span><span class="o">=</span><span class="n">arr</span><span class="p">)</span>
+</code></pre></div>
+<p>Typed and sourced allocation are <strong>mutually exclusive</strong>.</p>
+<h3 id="move_alloc-fortran-2003"><code>move_alloc</code> (Fortran 2003+)<a class="headerlink" href="#move_alloc-fortran-2003" title="Permanent link">&para;</a></h3>
+<p>Transfers the descriptor (not the data buffer) from one allocatable to another. Fast for large arrays — no copy.</p>
+<div class="highlight"><pre><span></span><code><span class="k">call </span><span class="nb">move_alloc</span><span class="p">(</span><span class="n">from</span><span class="p">,</span><span class="w"> </span><span class="n">to</span><span class="p">)</span>
+</code></pre></div>
+<ul>
+<li><code>to</code> gets the allocation status of <code>from</code>.</li>
+<li><code>from</code> becomes unallocated after the call.</li>
+<li>If <code>to</code> was already allocated, it is deallocated first.</li>
+</ul>
+<p><strong>Use case — cheap array swap during time-stepping:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">),</span><span class="w"> </span><span class="k">allocatable</span><span class="p">,</span><span class="w"> </span><span class="k">dimension</span><span class="p">(:)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">ar_current</span><span class="p">,</span><span class="w"> </span><span class="n">ar_old</span><span class="p">,</span><span class="w"> </span><span class="n">help</span>
+<span class="c">! ... initialize ...</span>
+<span class="k">do </span><span class="n">jj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">jjmax</span>
+<span class="w">  </span><span class="k">call </span><span class="n">time_step</span><span class="p">(</span><span class="n">ar_current</span><span class="p">,</span><span class="w"> </span><span class="n">ar_old</span><span class="p">)</span>
+<span class="w">  </span><span class="k">call </span><span class="nb">move_alloc</span><span class="p">(</span><span class="n">ar_current</span><span class="p">,</span><span class="w"> </span><span class="n">ar_old</span><span class="p">)</span><span class="w">   </span><span class="c">! rename ar_current → ar_old</span>
+<span class="k">end do</span>
+</code></pre></div>
+<h3 id="enlarging-resizing-allocatable-arrays-fortran-2003">Enlarging / Resizing Allocatable Arrays (Fortran 2003+)<a class="headerlink" href="#enlarging-resizing-allocatable-arrays-fortran-2003" title="Permanent link">&para;</a></h3>
+<p>Assignment from an array constructor auto-resizes the left-hand side:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">),</span><span class="w"> </span><span class="k">allocatable</span><span class="p">,</span><span class="w"> </span><span class="k">dimension</span><span class="p">(:)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">values</span>
+<span class="n">values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">1._rk</span><span class="p">,</span><span class="w"> </span><span class="mf">5._rk</span><span class="p">]</span><span class="w">              </span><span class="c">! size 2</span>
+<span class="n">values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">values</span><span class="p">,</span><span class="w"> </span><span class="mf">6._rk</span><span class="p">,</span><span class="w"> </span><span class="mf">2._rk</span><span class="p">,</span><span class="w"> </span><span class="mf">3._rk</span><span class="p">]</span><span class="w">  </span><span class="c">! size 5 (auto-resize)</span>
+</code></pre></div>
+<p>Using <code>move_alloc</code> for explicit resize (avoids deep copy):</p>
+<div class="highlight"><pre><span></span><code><span class="k">subroutine </span><span class="n">resize_alloc</span><span class="p">(</span><span class="n">alloc</span><span class="p">,</span><span class="w"> </span><span class="n">new_size</span><span class="p">)</span>
+<span class="w">  </span><span class="k">type</span><span class="p">(</span><span class="n">alloc_type</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">alloc</span>
+<span class="w">  </span><span class="kt">integer</span><span class="w">          </span><span class="kd">::</span><span class="w"> </span><span class="n">new_size</span>
+<span class="w">  </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">),</span><span class="w"> </span><span class="k">allocatable</span><span class="p">,</span><span class="w"> </span><span class="k">dimension</span><span class="p">(:)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">temp</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">new_size</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">size</span><span class="p">(</span><span class="n">alloc</span><span class="p">%</span><span class="k">data</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">    allocate</span><span class="p">(</span><span class="n">temp</span><span class="p">(</span><span class="n">new_size</span><span class="p">))</span>
+<span class="w">    </span><span class="n">temp</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">alloc</span><span class="p">%</span><span class="n">number_of_data</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">alloc</span><span class="p">%</span><span class="k">data</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">alloc</span><span class="p">%</span><span class="n">number_of_data</span><span class="p">)</span>
+<span class="w">    </span><span class="k">call </span><span class="nb">move_alloc</span><span class="p">(</span><span class="n">temp</span><span class="p">,</span><span class="w"> </span><span class="n">alloc</span><span class="p">%</span><span class="k">data</span><span class="p">)</span><span class="w">   </span><span class="c">! no deallocation of alloc%data needed</span>
+<span class="w">  </span><span class="k">end if</span>
+<span class="k">end subroutine</span>
+</code></pre></div>
+<h3 id="recursive-allocatable-components-fortran-2008">Recursive Allocatable Components (Fortran 2008)<a class="headerlink" href="#recursive-allocatable-components-fortran-2008" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">type entry</span>
+<span class="k">  </span><span class="kt">real</span><span class="w">    </span><span class="kd">::</span><span class="w"> </span><span class="k">value</span>
+<span class="k">  </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="nb">index</span>
+<span class="nb">  </span><span class="k">type</span><span class="p">(</span><span class="k">entry</span><span class="p">),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">next</span><span class="w">   </span><span class="c">! linked list via allocatable</span>
+<span class="k">end type</span>
+</code></pre></div>
+<blockquote>
+<p>⚠️ As of gfortran 9 / ifort 19, recursive allocatable components may not work as expected. Use <code>move_alloc</code>-based workaround.
+</p>
+</blockquote>
+<hr />
+<h3 id="23-automatic-arrays">2.3 Automatic Arrays<a class="headerlink" href="#23-automatic-arrays" title="Permanent link">&para;</a></h3>
+<p>Automatic arrays are local variables with variable-length dimensions defined at procedure entry:</p>
+<div class="highlight"><pre><span></span><code><span class="k">subroutine </span><span class="n">auto_array</span><span class="p">(</span><span class="n">imax</span><span class="p">,</span><span class="w"> </span><span class="n">dummy_array</span><span class="p">)</span>
+<span class="w">  </span><span class="kt">integer</span><span class="p">,</span><span class="w">            </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">imax</span>
+<span class="w">  </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">dimension</span><span class="p">(:)</span><span class="w">          </span><span class="kd">::</span><span class="w"> </span><span class="n">dummy_array</span>
+<span class="w">  </span><span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="k">dimension</span><span class="p">(</span><span class="n">imax</span><span class="p">)</span><span class="w">          </span><span class="kd">::</span><span class="w"> </span><span class="n">local_array1</span><span class="w">  </span><span class="c">! automatic — destroyed on return</span>
+<span class="w">  </span><span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="k">dimension</span><span class="p">(</span><span class="n">size</span><span class="p">(</span><span class="n">dummy_array</span><span class="p">))</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">local_array2</span><span class="w">  </span><span class="c">! automatic</span>
+<span class="k">end subroutine</span>
+</code></pre></div>
+<ul>
+<li>Created on the <strong>stack</strong> when the procedure is entered.</li>
+<li>Destroyed <strong>automatically</strong> on return (no deallocation needed).</li>
+<li>Stack size must be large enough (can be a problem for large arrays).</li>
+<li>May be faster than heap-allocated arrays for small sizes.</li>
+<li>Have lost relevance with the comprehensive features of allocatables.</li>
+</ul>
+<hr />
+<h3 id="24-dynamic-length-characters-fortran-2003">2.4 Dynamic-Length Characters (Fortran 2003+)<a class="headerlink" href="#24-dynamic-length-characters-fortran-2003" title="Permanent link">&para;</a></h3>
+<p>Character strings can have dynamically adjusted length using the <strong><code>allocatable</code></strong> attribute:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">string</span>
+<span class="n">string</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;simple&#39;</span><span class="w">         </span><span class="c">! len = 6</span>
+<span class="n">string</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;short&#39;</span><span class="w">          </span><span class="c">! len = 5 (auto-resize)</span>
+<span class="n">string</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="s1">&#39; sentence&#39;</span><span class="w">  </span><span class="c">! len = 14 (concatenation)</span>
+<span class="n">string</span><span class="p">(:)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">            </span><span class="c">! len still 14 — blanks it, does not resize</span>
+</code></pre></div>
+<ul>
+<li>Declared with <code>len=:</code> (deferred length).</li>
+<li>Can be a component of a derived type.</li>
+<li>Does <strong>not</strong> work for character arrays (only scalars and derived type components).</li>
+<li>Length can potentially be GigaBytes depending on the compiler.</li>
+</ul>
+<p><strong>Deferred-length string in a derived type (enabling variable-length array of strings):</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">module </span><span class="n">alloc_strings_module</span>
+<span class="w">  </span><span class="k">type </span><span class="n">dyn_string_type</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">string</span>
+<span class="w">  </span><span class="k">end type</span>
+<span class="k">end module</span>
+
+<span class="k">type</span><span class="p">(</span><span class="n">dyn_string_type</span><span class="p">),</span><span class="w"> </span><span class="k">dimension</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">dyn</span>
+<span class="n">dyn</span><span class="p">(</span><span class="mi">4</span><span class="p">)%</span><span class="n">string</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;simple&#39;</span><span class="w">   </span><span class="c">! len = 6</span>
+</code></pre></div>
+<hr />
+<h2 id="3-array-types-and-descriptors">3. Array Types and Descriptors<a class="headerlink" href="#3-array-types-and-descriptors" title="Permanent link">&para;</a></h2>
+<h3 id="array-shape-kinds">Array Shape Kinds<a class="headerlink" href="#array-shape-kinds" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Kind</th>
+<th>Declaration</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Explicit-shape</strong></td>
+<td><code>dimension(nmax)</code></td>
+<td>Conventional Fortran 77</td>
+</tr>
+<tr>
+<td><strong>Assumed-size</strong></td>
+<td><code>dimension(nmax, *)</code></td>
+<td>Last dim unknown; <code>size()</code> not applicable</td>
+</tr>
+<tr>
+<td><strong>Assumed-shape</strong></td>
+<td><code>dimension(:)</code></td>
+<td>Preferred dummy argument form</td>
+</tr>
+<tr>
+<td><strong>Allocatable</strong></td>
+<td><code>dimension(:), allocatable</code></td>
+<td>Deferred-shape, heap</td>
+</tr>
+<tr>
+<td><strong>Pointer</strong></td>
+<td><code>dimension(:), pointer</code></td>
+<td>Deferred-shape, heap, may be non-contiguous</td>
+</tr>
+<tr>
+<td><strong>Automatic</strong></td>
+<td><code>dimension(size(other))</code></td>
+<td>Local, stack</td>
+</tr>
+<tr>
+<td><strong>Implied-shape (parameter)</strong></td>
+<td><code>integer, parameter :: order(0:*) = [0,1,2,3]</code></td>
+<td>Named constant, size from RHS</td>
+</tr>
+</tbody>
+</table>
+<h3 id="array-descriptors">Array Descriptors<a class="headerlink" href="#array-descriptors" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Explicit-shape and assumed-size</strong> arrays do <strong>not</strong> use a descriptor — just a base pointer.</li>
+<li><strong>Allocatable arrays</strong> and <strong>pointer arrays</strong> use a <strong>descriptor</strong> containing base address, type, rank, and per-dimension stride/bounds.</li>
+<li><code>move_alloc</code> transfers the descriptor, not the data.</li>
+</ul>
+<h3 id="aesa-array-element-sequence-association">AESA — Array Element Sequence Association<a class="headerlink" href="#aesa-array-element-sequence-association" title="Permanent link">&para;</a></h3>
+<p>Fortran multidimensional arrays use <strong>column-major</strong> (first-index varies fastest) storage, identical across all Fortran compilers:</p>
+<div class="highlight"><pre><span></span><code>a(j, k, l)  with  real :: a(jx, kx, lx)
+→ memory element at a(1,1,1) + (j-1) + jx*(k-1) + jx*kx*(l-1)
+</code></pre></div>
+<ul>
+<li>Explicit-shape arrays passed to assumed-size subroutines exploit AESA to change rank.</li>
+<li>Arrays in C/C++/Java are arrays-of-arrays; Fortran multidimensional arrays are a flat contiguous block.</li>
+</ul>
+<h3 id="declaration-of-array-dummy-parameters-summary">Declaration of Array Dummy Parameters (summary)<a class="headerlink" href="#declaration-of-array-dummy-parameters-summary" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">subroutine </span><span class="n">up</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="n">u</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="p">,</span><span class="w"> </span><span class="n">bb</span><span class="p">)</span>
+<span class="w">  </span><span class="kt">integer</span><span class="w">                        </span><span class="kd">::</span><span class="w"> </span><span class="n">n</span>
+<span class="w">  </span><span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="k">dimension</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">15</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w">   </span><span class="kd">::</span><span class="w"> </span><span class="n">p</span><span class="w">      </span><span class="c">! explicit-shape</span>
+<span class="w">  </span><span class="kt">real</span><span class="w">                           </span><span class="kd">::</span><span class="w"> </span><span class="n">r</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">15</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="w">  </span><span class="c">! assumed-size</span>
+<span class="w">  </span><span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="k">dimension</span><span class="p">(:,</span><span class="w"> </span><span class="mi">5</span><span class="p">:)</span><span class="w">         </span><span class="kd">::</span><span class="w"> </span><span class="n">s</span><span class="w">      </span><span class="c">! assumed-shape</span>
+<span class="w">  </span><span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="k">allocatable</span><span class="p">,</span><span class="w"> </span><span class="k">dimension</span><span class="p">(:,:)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">u</span><span class="w">   </span><span class="c">! dynamic (allocatable)</span>
+<span class="w">  </span><span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="k">pointer</span><span class="p">,</span><span class="w"> </span><span class="k">dimension</span><span class="p">(:)</span><span class="w">    </span><span class="kd">::</span><span class="w"> </span><span class="n">v</span><span class="w">      </span><span class="c">! array pointer</span>
+<span class="w">  </span><span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="k">dimension</span><span class="p">(</span><span class="n">size</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w">  </span><span class="kd">::</span><span class="w"> </span><span class="n">bb</span><span class="w">     </span><span class="c">! automatic (local)</span>
+<span class="k">end subroutine</span>
+</code></pre></div>
+<p>Default lower bound for assumed-shape and pointer arrays is <strong>1</strong>.</p>
+<hr />
+<h2 id="4-arrays-with-different-ranks-fortran-2018">4. Arrays with Different Ranks (Fortran 2018+)<a class="headerlink" href="#4-arrays-with-different-ranks-fortran-2018" title="Permanent link">&para;</a></h2>
+<h3 id="assumed-rank-arrays">Assumed-Rank Arrays<a class="headerlink" href="#assumed-rank-arrays" title="Permanent link">&para;</a></h3>
+<p>Declared with <code>dimension(..)</code> — accepts any rank at the call site:</p>
+<div class="highlight"><pre><span></span><code><span class="k">subroutine </span><span class="n">print_bounds</span><span class="p">(</span><span class="k">array</span><span class="p">)</span>
+<span class="w">  </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">dk</span><span class="p">),</span><span class="w"> </span><span class="k">dimension</span><span class="p">(..),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="k">array</span>
+<span class="k">  </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">ll</span><span class="p">,</span><span class="w"> </span><span class="n">ll_max</span>
+<span class="w">  </span><span class="n">ll_max</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rank</span><span class="p">(</span><span class="k">array</span><span class="p">)</span><span class="w">   </span><span class="c">! intrinsic: number of dimensions</span>
+<span class="w">  </span><span class="k">do </span><span class="n">ll</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">ll_max</span>
+<span class="w">    </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="nb">lbound</span><span class="p">(</span><span class="k">array</span><span class="p">,</span><span class="w"> </span><span class="n">ll</span><span class="p">),</span><span class="w"> </span><span class="s1">&#39;:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nb">ubound</span><span class="p">(</span><span class="k">array</span><span class="p">,</span><span class="w"> </span><span class="n">ll</span><span class="p">)</span>
+<span class="w">  </span><span class="k">end do</span>
+<span class="k">end subroutine</span>
+</code></pre></div>
+<ul>
+<li>Requires an explicit interface.</li>
+<li>Cannot be an element of a derived type.</li>
+<li>Syntax: <code>dimension(..)</code> — no spaces inside <code>(..)</code>.</li>
+</ul>
+<h3 id="select-rank-construct-fortran-2018"><code>select rank</code> Construct (Fortran 2018+)<a class="headerlink" href="#select-rank-construct-fortran-2018" title="Permanent link">&para;</a></h3>
+<p>Dispatch on the actual rank at runtime:</p>
+<div class="highlight"><pre><span></span><code><span class="k">select </span><span class="n">rank</span><span class="p">(</span><span class="k">array</span><span class="p">)</span>
+<span class="n">rank</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="w">  </span><span class="c">! scalar</span>
+<span class="n">rank</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="w">  </span><span class="c">! 1-D — array is treated as declared dimension(lbound:ubound)</span>
+<span class="n">rank</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="w">  </span><span class="c">! 2-D</span>
+<span class="n">rank</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+<span class="w">  </span><span class="c">! assumed-size</span>
+<span class="n">rank</span><span class="w"> </span><span class="n">default</span>
+<span class="w">  </span><span class="c">! any other rank not explicitly listed</span>
+<span class="k">end select</span>
+</code></pre></div>
+<ul>
+<li>Within each block the array is treated as if declared with that rank.</li>
+<li>Bounds obtained via <code>lbound</code> and <code>ubound</code>.</li>
+<li>Can be named: <code>my_select: select rank(array)</code>.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c">! Example — rank-generic write subroutine</span>
+<span class="k">subroutine </span><span class="n">write_array</span><span class="p">(</span><span class="k">array</span><span class="p">,</span><span class="w"> </span><span class="n">unit</span><span class="p">)</span>
+<span class="w">  </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">dk</span><span class="p">),</span><span class="w"> </span><span class="k">dimension</span><span class="p">(..),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="k">array</span>
+<span class="k">  </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">unit</span><span class="p">,</span><span class="w"> </span><span class="n">ll</span>
+<span class="w">  </span><span class="k">select </span><span class="n">rank</span><span class="p">(</span><span class="k">array</span><span class="p">)</span>
+<span class="w">  </span><span class="n">rank</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="w">    </span><span class="k">do </span><span class="n">ll</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">(</span><span class="k">array</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+<span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;(e15.5)&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">array</span><span class="p">(</span><span class="n">ll</span><span class="p">)</span>
+<span class="w">    </span><span class="k">end do</span>
+<span class="k">  </span><span class="n">rank</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="w">    </span><span class="k">do </span><span class="n">ll</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">(</span><span class="k">array</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+<span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;(*(e15.5))&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">array</span><span class="p">(</span><span class="n">ll</span><span class="p">,</span><span class="w"> </span><span class="p">:)</span>
+<span class="w">    </span><span class="k">end do</span>
+<span class="k">  end select</span>
+<span class="k">end subroutine</span>
+</code></pre></div>
+<blockquote>
+<p>Available in gfortran 11+. <strong><code>END SELECT</code></strong> not <code>END SELECT RANK</code>.
+</p>
+</blockquote>
+<h3 id="integer-arrays-for-rank-and-bounds-fortran-2023">Integer Arrays for Rank and Bounds (Fortran 2023+)<a class="headerlink" href="#integer-arrays-for-rank-and-bounds-fortran-2023" title="Permanent link">&para;</a></h3>
+<p>Ranks and extents can be specified by integer arrays:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">lb_array</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="n">ub_array</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">dk</span><span class="p">),</span><span class="w"> </span><span class="k">dimension</span><span class="p">(</span><span class="n">lb_array</span><span class="p">:</span><span class="n">ub_array</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">alpha</span>
+
+<span class="c">! Shape of one array defines shape of another:</span>
+<span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">dk</span><span class="p">),</span><span class="w"> </span><span class="k">dimension</span><span class="p">(</span><span class="nb">shape</span><span class="p">(</span><span class="k">array</span><span class="p">))</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">other_array</span>
+
+<span class="c">! Rank as attribute:</span>
+<span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">dk</span><span class="p">),</span><span class="w"> </span><span class="n">rank</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="k">array</span><span class="w">   </span><span class="c">! declares a rank-2 array</span>
+</code></pre></div>
+<blockquote>
+<p>Not yet working in gfortran 17.
+</p>
+</blockquote>
+<hr />
+<h2 id="5-contiguous-attribute-fortran-2008">5. Contiguous Attribute (Fortran 2008+)<a class="headerlink" href="#5-contiguous-attribute-fortran-2008" title="Permanent link">&para;</a></h2>
+<p>Specifies that array elements are contiguous in memory (stride 1). Enables better compiler optimization.</p>
+<div class="highlight"><pre><span></span><code><span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="k">pointer</span><span class="p">,</span><span class="w">     </span><span class="k">contiguous</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">contiguous_pointer</span><span class="p">(:)</span>
+<span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="k">contiguous</span><span class="p">,</span><span class="w"> </span><span class="k">dimension</span><span class="p">(:,:)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">assumed_shape_2D</span>
+</code></pre></div>
+<ul>
+<li><strong>Allocatable arrays are always contiguous</strong> — no need for the attribute.</li>
+<li>A <strong>pointer with <code>contiguous</code></strong> may only be associated with a contiguous target.</li>
+<li>An <strong>assumed-shape dummy with <code>contiguous</code></strong>: if a non-contiguous actual argument is passed, the compiler creates a contiguous temporary copy on entry and copies back on exit.</li>
+<li><code>IS_CONTIGUOUS(array)</code> — intrinsic function returning <code>.true.</code>/<code>.false.</code></li>
+</ul>
+<p><strong>When is an array section contiguous?</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">aa</span><span class="p">(</span><span class="mi">10</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w">      </span><span class="c">! contiguous — single column</span>
+<span class="n">bb</span><span class="p">(:,</span><span class="w"> </span><span class="n">i</span><span class="p">:</span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w">     </span><span class="c">! contiguous by AESA</span>
+<span class="n">dd</span><span class="p">(</span><span class="n">jk</span><span class="p">,</span><span class="w"> </span><span class="p">:)</span><span class="w">         </span><span class="c">! NOT contiguous — jk is a scalar → stride across rows</span>
+</code></pre></div>
+<p><strong>Performance impact:</strong> Non-contiguous pointer arrays force the compiler to generate code for the general stride case, which is slower. Adding <code>contiguous</code> to an assumed-shape dummy lets the compiler use stride-1 code paths.</p>
+<hr />
+<h2 id="6-dynamic-derived-types-parametrized-types-fortran-2003">6. Dynamic Derived Types / Parametrized Types (Fortran 2003+)<a class="headerlink" href="#6-dynamic-derived-types-parametrized-types-fortran-2003" title="Permanent link">&para;</a></h2>
+<h3 id="parametrized-derived-types-pdt">Parametrized Derived Types (PDT)<a class="headerlink" href="#parametrized-derived-types-pdt" title="Permanent link">&para;</a></h3>
+<p>Type parameters are declared with <code>kind</code> (compile-time) or <code>len</code> (runtime) attributes:</p>
+<div class="highlight"><pre><span></span><code><span class="k">type</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">node_set_type</span><span class="p">(</span><span class="n">kd</span><span class="p">,</span><span class="w"> </span><span class="n">ln</span><span class="p">)</span>
+<span class="w">  </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">kd</span><span class="w">          </span><span class="c">! kind parameter — like a type parameter</span>
+<span class="w">  </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="nb">len</span><span class="w">  </span><span class="kd">::</span><span class="w"> </span><span class="n">ln</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w">      </span><span class="c">! len parameter — can vary at runtime</span>
+<span class="w">  </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">kd</span><span class="p">),</span><span class="w"> </span><span class="k">dimension</span><span class="p">(</span><span class="n">ln</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">z</span>
+<span class="k">end type </span><span class="n">node_set_type</span>
+
+<span class="c">! Usage:</span>
+<span class="k">type</span><span class="p">(</span><span class="n">node_set_type</span><span class="p">(</span><span class="n">kd</span><span class="o">=</span><span class="n">dk</span><span class="p">,</span><span class="w"> </span><span class="n">ln</span><span class="o">=</span><span class="n">nmax</span><span class="p">)),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">nodes</span>
+<span class="k">allocate</span><span class="p">(</span><span class="n">nodes_type</span><span class="p">(</span><span class="n">dk</span><span class="p">,</span><span class="w"> </span><span class="n">ln</span><span class="o">=</span><span class="n">nmax</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">nodes</span><span class="p">)</span>
+</code></pre></div>
+<ul>
+<li><code>kind</code> parameters are constants (like kind selectors).</li>
+<li><code>len</code> parameters can vary — similar to allocatable components but built into the type.</li>
+</ul>
+<hr />
+<h2 id="7-array-syntax">7. Array Syntax<a class="headerlink" href="#7-array-syntax" title="Permanent link">&para;</a></h2>
+<p>Fortran treats arrays as first-class data objects — operations apply element-wise.</p>
+<h3 id="whole-array-operations">Whole-Array Operations<a class="headerlink" href="#whole-array-operations" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="k">dimension</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">B</span><span class="p">,</span><span class="w"> </span><span class="n">C</span>
+<span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3.2</span><span class="w">              </span><span class="c">! fill all elements</span>
+<span class="n">B</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1.5</span><span class="w">          </span><span class="c">! element-wise multiply</span>
+<span class="n">C</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">B</span><span class="w">            </span><span class="c">! element-wise (NOT matrix multiplication!)</span>
+</code></pre></div>
+<h3 id="array-sections">Array Sections<a class="headerlink" href="#array-sections" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="k">dimension</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">array_a</span>
+<span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="k">dimension</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">array_b</span>
+<span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="k">dimension</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="w">   </span><span class="kd">::</span><span class="w"> </span><span class="n">vector</span>
+<span class="n">array_a</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="p">:)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">array_b</span><span class="p">(:,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">1.2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">vector</span>
+</code></pre></div>
+<h3 id="array-constructors">Array Constructors<a class="headerlink" href="#array-constructors" title="Permanent link">&para;</a></h3>
+<p>Rank-one arrays; use <code>reshape</code> for higher rank:</p>
+<div class="highlight"><pre><span></span><code><span class="n">AA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">B</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">B</span><span class="p">(</span><span class="n">l</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">c</span><span class="p">(</span><span class="mi">2</span><span class="p">:</span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">)]</span><span class="w">   </span><span class="c">! first columns, then rows</span>
+<span class="n">BB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="o">/</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="o">/</span><span class="p">)</span><span class="w">                  </span><span class="c">! old syntax</span>
+<span class="n">CC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[(</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">)]</span><span class="w">                  </span><span class="c">! implied do-loop constructor</span>
+</code></pre></div>
+<p>Since Fortran 2008 — typed constructors:</p>
+<div class="highlight"><pre><span></span><code><span class="n">commands</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="s2">&quot;ls&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;cat&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;more&quot;</span><span class="p">]</span>
+<span class="n">string_array</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">17</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">string1</span><span class="p">,</span><span class="w"> </span><span class="n">string2</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;12345&#39;</span><span class="p">]</span>
+</code></pre></div>
+<h3 id="where-masked-array-assignment"><code>WHERE</code> — Masked Array Assignment<a class="headerlink" href="#where-masked-array-assignment" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="k">dimension</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">recip_A</span>
+<span class="k">where</span><span class="w"> </span><span class="p">(</span><span class="n">A</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">)</span>
+<span class="w">  </span><span class="n">recip_A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">A</span>
+<span class="n">elsewhere</span><span class="w">               </span><span class="c">! Fortran 95</span>
+<span class="w">  </span><span class="n">recip_A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span>
+<span class="k">end where</span>
+</code></pre></div>
+<p><code>WHERE</code> is element-wise masking — replaces conditional loops cleanly.</p>
+<hr />
+<h2 id="8-performance-implications">8. Performance Implications<a class="headerlink" href="#8-performance-implications" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>Key principle: <strong>flexibility and performance are often contradictory</strong>. Design your data layout for the most critical loops.
+</p>
+</blockquote>
+<h3 id="general-rules">General Rules<a class="headerlink" href="#general-rules" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Use arrays</strong> — avoid pointers for data that lives in hot loops.</li>
+<li><strong>Avoid pointers</strong> — pointer arrays force the compiler to assume potential non-contiguity (aliasing), preventing vectorisation.</li>
+<li><strong>Iterate on the first (innermost) dimension</strong> — Fortran is column-major; accessing <code>a(i, j, k)</code> in a loop over <code>i</code> is cache-friendly.</li>
+<li><strong>Prefer allocatable over pointer</strong> — allocatables are always contiguous and allow alias-free optimisation.</li>
+<li><strong>Prefer SoA over AoS</strong> — use arrays of scalars as derived type components (Structure of Arrays) rather than arrays of derived types (Array of Structures); avoids strided access to fields.</li>
+<li><strong>Never use linked lists for time-critical loops</strong> — pointer chasing kills cache performance by orders of magnitude.</li>
+</ul>
+<h3 id="array-attribute-performance-ranking-daxpy-benchmark">Array Attribute Performance Ranking (daxpy benchmark)<a class="headerlink" href="#array-attribute-performance-ranking-daxpy-benchmark" title="Permanent link">&para;</a></h3>
+<p>From highest to lowest performance (GCC 11–12):</p>
+<ol>
+<li><code>allocatable, dimension(:)</code> — compiler knows memory is contiguous</li>
+<li><code>contiguous, dimension(:)</code> — explicit contiguity hint for assumed-shape</li>
+<li><code>dimension(:)</code> (assumed-shape) — compiler assumes possible non-contiguity</li>
+<li><code>pointer, dimension(:)</code> — worst; most conservative code generated</li>
+</ol>
+<blockquote>
+<p>⚠️ Results vary across compiler versions (GCC 11 vs 12 vs 17 show different orderings) — benchmark on your target compiler.
+</p>
+</blockquote>
+<h3 id="loop-unrolling">Loop Unrolling<a class="headerlink" href="#loop-unrolling" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Compiler typically unrolls at <code>O2</code>/<code>O3</code>.</li>
+<li>Manual unrolling by 2×/4×/8× can improve cache use for small arrays but hurts for arrays larger than cache.</li>
+</ul>
+<h3 id="dimension-access-patterns">Dimension Access Patterns<a class="headerlink" href="#dimension-access-patterns" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Iterating on the <strong>first</strong> dimension is cache-friendly.</li>
+<li>Adding extra unit-extent dimensions generally degrades performance at small loop lengths; effect diminishes for large arrays (compiler can use wider SIMD).</li>
+<li>Iterating on a <strong>non-first</strong> dimension is counterproductive — restructure loops.</li>
+</ul>
+<h3 id="structure-of-arrays-vs-array-of-structures">Structure of Arrays vs Array of Structures<a class="headerlink" href="#structure-of-arrays-vs-array-of-structures" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c">! AoS (Array of Structures) — BAD for hot loops accessing one field</span>
+<span class="k">type </span><span class="n">t_rxy</span>
+<span class="w">  </span><span class="kt">real</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span>
+<span class="k">end type</span>
+<span class="k">type</span><span class="p">(</span><span class="n">t_rxy</span><span class="p">),</span><span class="w"> </span><span class="k">dimension</span><span class="p">(:)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">d</span><span class="w">   </span><span class="c">! d(i)%x strided by sizeof(t_rxy)</span>
+
+<span class="c">! SoA (Structure of Arrays) — GOOD</span>
+<span class="k">type </span><span class="n">t_rxyArr</span>
+<span class="w">  </span><span class="kt">real</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span><span class="w">                          </span><span class="kd">::</span><span class="w"> </span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span>
+<span class="w">  </span><span class="kt">real</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span><span class="w"> </span><span class="k">dimension</span><span class="p">(:),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="k">array</span>
+<span class="k">end type</span>
+<span class="c">! or simply separate arrays:</span>
+<span class="kt">real</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span><span class="w"> </span><span class="k">dimension</span><span class="p">(:)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span>
+</code></pre></div>
+<h3 id="key-takeaways">Key Takeaways<a class="headerlink" href="#key-takeaways" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Performance differences are primarily due to <strong>data layout</strong> and <strong>memory access patterns</strong>.</li>
+<li>These patterns are not Fortran-specific — the same applies to C, C++, etc.</li>
+<li>Simplify data access for frequently used data; cache hierarchy dominates for large arrays.</li>
+<li>Avoid hidden access via procedure calls for frequently used data.</li>
+</ul>
+<hr />
+<p><em>Notes compiled from HLRS lecture slides "Fortran dynamic data" (140 slides, Part 3), HLRS Stuttgart.</em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

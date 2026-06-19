@@ -1,0 +1,857 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://eamonocathain.github.io/FortranNotes/Fortran%20HLRS/Iso_fortran_env%20Module%2038294ba1bb068014aea9cdd4fd178731/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Iso_fortran_env Module - Fortran HLRS Notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#iso_fortran_env-module" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Fortran HLRS Notes" class="md-header__button md-logo" aria-label="Fortran HLRS Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Fortran HLRS Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Iso_fortran_env Module
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Fortran HLRS Notes" class="md-nav__button md-logo" aria-label="Fortran HLRS Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Fortran HLRS Notes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Notes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Notes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Arithmetic%20Basics%2038094ba1bb068058b949c5f878eaa564/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arithmetic Basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Declaration%20of%20Variables%2038094ba1bb06801ab840c3a5f06aaa46/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Declaration of Variables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../If%20and%20Else%2038094ba1bb068028b475fa54f910cb48/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    If and Else
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Loops%2038094ba1bb06804ab400ccb6252c4b0a/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Loops
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Arrays%2038094ba1bb068047a6b8d5492b19afb7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arrays
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Functions%2038194ba1bb0680d69729ec69d7e35a77/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Subroutines%2038194ba1bb0680bf85edc8bae2a3166d/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Subroutines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Modules%2038194ba1bb0680daaa3bedcff442c0df/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="iso_fortran_env-module">Iso_fortran_env Module<a class="headerlink" href="#iso_fortran_env-module" title="Permanent link">&para;</a></h1>
+<p><code>iso_fortran_env</code> is an <strong>intrinsic module</strong> provided by every modern Fortran compiler.</p>
+<p>It contains standardized definitions for data types, input/output streams, system constants, and compiler information.</p>
+<p>Using <code>iso_fortran_env</code> helps make programs portable between different compilers and operating systems.</p>
+<div class="highlight"><pre><span></span><code><span class="k">use </span><span class="n">iso_fortran_env</span>
+</code></pre></div>
+<hr />
+<h1 id="why-use-iso_fortran_env"><strong>Why Use <code>iso_fortran_env</code>?</strong><a class="headerlink" href="#why-use-iso_fortran_env" title="Permanent link">&para;</a></h1>
+<p>Different computers and compilers may store integers and floating-point numbers differently.</p>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">integer</span>
+<span class="kt">real</span>
+</code></pre></div>
+<p>do not guarantee a particular size.</p>
+<p><code>iso_fortran_env</code> provides standard names for common sizes so that programs behave consistently across systems.</p>
+<hr />
+<h1 id="portable-data-types"><strong>Portable Data Types</strong><a class="headerlink" href="#portable-data-types" title="Permanent link">&para;</a></h1>
+<p>The module provides kind values for common integer sizes:</p>
+<div class="highlight"><pre><span></span><code><span class="n">int8</span>
+<span class="n">int16</span>
+<span class="n">int32</span>
+<span class="n">int64</span>
+</code></pre></div>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="k">use </span><span class="n">iso_fortran_env</span>
+
+<span class="kt">integer</span><span class="p">(</span><span class="n">int32</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">year</span>
+<span class="kt">integer</span><span class="p">(</span><span class="n">int64</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">population</span>
+</code></pre></div>
+<p>Approximate ranges:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Kind</strong></th>
+<th><strong>Typical Range</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>int8</td>
+<td>−128 to 127</td>
+</tr>
+<tr>
+<td>int16</td>
+<td>−32,768 to 32,767</td>
+</tr>
+<tr>
+<td>int32</td>
+<td>±2 billion</td>
+</tr>
+<tr>
+<td>int64</td>
+<td>±9×10¹⁸</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p>The module also provides floating-point kinds:</p>
+<div class="highlight"><pre><span></span><code><span class="n">real32</span>
+<span class="n">real64</span>
+<span class="n">real128</span>
+</code></pre></div>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">real</span><span class="p">(</span><span class="n">real64</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">pi</span>
+</code></pre></div>
+<p>Typical meanings:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Kind</strong></th>
+<th><strong>Common Name</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>real32</td>
+<td>Single precision</td>
+</tr>
+<tr>
+<td>real64</td>
+<td>Double precision</td>
+</tr>
+<tr>
+<td>real128</td>
+<td>Quadruple precision (if supported)</td>
+</tr>
+</tbody>
+</table>
+<p>For scientific computing, <code>real64</code> is often the default choice.</p>
+<hr />
+<h1 id="using-kinds-for-constants"><strong>Using Kinds for Constants</strong><a class="headerlink" href="#using-kinds-for-constants" title="Permanent link">&para;</a></h1>
+<p>When using kind parameters, numeric constants should normally use the same kind.</p>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">real</span><span class="p">(</span><span class="n">real64</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">x</span>
+
+<span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3.141592653589793_real64</span>
+</code></pre></div>
+<p>This ensures that the constant is stored with the correct precision.</p>
+<hr />
+<h1 id="standard-input-and-output-units"><strong>Standard Input and Output Units</strong><a class="headerlink" href="#standard-input-and-output-units" title="Permanent link">&para;</a></h1>
+<p>The module provides predefined unit numbers:</p>
+<div class="highlight"><pre><span></span><code><span class="n">input_unit</span>
+<span class="n">output_unit</span>
+<span class="n">error_unit</span>
+</code></pre></div>
+<p>These represent:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Constant</strong></th>
+<th><strong>Purpose</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>input_unit</td>
+<td>Standard input (keyboard)</td>
+</tr>
+<tr>
+<td>output_unit</td>
+<td>Standard output (screen)</td>
+</tr>
+<tr>
+<td>error_unit</td>
+<td>Standard error output</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="input"><strong>Input</strong><a class="headerlink" href="#input" title="Permanent link">&para;</a></h2>
+<p>Instead of:</p>
+<div class="highlight"><pre><span></span><code><span class="k">read</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="n">x</span>
+</code></pre></div>
+<p>you may write:</p>
+<div class="highlight"><pre><span></span><code><span class="k">read</span><span class="p">(</span><span class="n">input_unit</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="n">x</span>
+</code></pre></div>
+<p>Both usually read from the keyboard.</p>
+<hr />
+<h2 id="output"><strong>Output</strong><a class="headerlink" href="#output" title="Permanent link">&para;</a></h2>
+<p>Instead of:</p>
+<div class="highlight"><pre><span></span><code><span class="k">print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Hello&quot;</span>
+</code></pre></div>
+<p>you may write:</p>
+<div class="highlight"><pre><span></span><code><span class="k">write</span><span class="p">(</span><span class="n">output_unit</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s2">&quot;Hello&quot;</span>
+</code></pre></div>
+<p>Both usually write to the terminal.</p>
+<hr />
+<h2 id="error-output"><strong>Error Output</strong><a class="headerlink" href="#error-output" title="Permanent link">&para;</a></h2>
+<p>Errors can be written separately:</p>
+<div class="highlight"><pre><span></span><code><span class="k">write</span><span class="p">(</span><span class="n">error_unit</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s2">&quot;Invalid input&quot;</span>
+</code></pre></div>
+<p>Many operating systems display standard output and error output separately.</p>
+<p>This becomes useful when writing large scientific programs.</p>
+<hr />
+<h1 id="compiler-information"><strong>Compiler Information</strong><a class="headerlink" href="#compiler-information" title="Permanent link">&para;</a></h1>
+<p>The module provides information about how a program was compiled.</p>
+<hr />
+<h2 id="compiler_version"><strong><code>compiler_version()</code></strong><a class="headerlink" href="#compiler_version" title="Permanent link">&para;</a></h2>
+<p>Returns the compiler version.</p>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="k">print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">compiler_version</span><span class="p">()</span>
+</code></pre></div>
+<p>Possible output:</p>
+<div class="highlight"><pre><span></span><code>GNU Fortran 14.2.0
+</code></pre></div>
+<p>Useful when reporting software versions or debugging.</p>
+<hr />
+<h2 id="compiler_options"><strong><code>compiler_options()</code></strong><a class="headerlink" href="#compiler_options" title="Permanent link">&para;</a></h2>
+<p>Returns the compiler flags used during compilation.</p>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="k">print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">compiler_options</span><span class="p">()</span>
+</code></pre></div>
+<p>Possible output:</p>
+<div class="highlight"><pre><span></span><code>-O3 -march=native -fopenmp
+</code></pre></div>
+<p>Useful when documenting exactly how a program was built.</p>
+<hr />
+<h1 id="source-code-information"><strong>Source Code Information</strong><a class="headerlink" href="#source-code-information" title="Permanent link">&para;</a></h1>
+<p>Several functions provide information about the current source code location.</p>
+<p>These are mainly used for debugging.</p>
+<hr />
+<h2 id="source_file"><strong><code>source_file()</code></strong><a class="headerlink" href="#source_file" title="Permanent link">&para;</a></h2>
+<p>Returns the name of the source file.</p>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="k">print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">source_file</span><span class="p">()</span>
+</code></pre></div>
+<p>Possible output:</p>
+<div class="highlight"><pre><span></span><code>physics_model.f90
+</code></pre></div>
+<hr />
+<h2 id="source_line"><strong><code>source_line()</code></strong><a class="headerlink" href="#source_line" title="Permanent link">&para;</a></h2>
+<p>Returns the current source line number.</p>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="k">print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">source_line</span><span class="p">()</span>
+</code></pre></div>
+<p>Possible output:</p>
+<div class="highlight"><pre><span></span><code>127
+</code></pre></div>
+<hr />
+<h2 id="procedure_name"><strong><code>procedure_name()</code></strong><a class="headerlink" href="#procedure_name" title="Permanent link">&para;</a></h2>
+<p>Returns the name of the current procedure.</p>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="k">print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">procedure_name</span><span class="p">()</span>
+</code></pre></div>
+<p>Possible output:</p>
+<div class="highlight"><pre><span></span><code>compute_flux
+</code></pre></div>
+<hr />
+<h2 id="example-debug-message"><strong>Example Debug Message</strong><a class="headerlink" href="#example-debug-message" title="Permanent link">&para;</a></h2>
+<p>These functions can be combined:</p>
+<div class="highlight"><pre><span></span><code><span class="k">write</span><span class="p">(</span><span class="n">error_unit</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">    </span><span class="s2">&quot;Error in &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">procedure_name</span><span class="p">(),</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">    </span><span class="s2">&quot; (&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">source_file</span><span class="p">(),</span><span class="w"> </span><span class="s2">&quot;:&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">source_line</span><span class="p">(),</span><span class="w"> </span><span class="s2">&quot;)&quot;</span>
+</code></pre></div>
+<p>Possible output:</p>
+<div class="highlight"><pre><span></span><code>Error in compute_flux (physics_model.f90:127)
+</code></pre></div>
+<p>This makes locating errors much easier.</p>
+<hr />
+<h1 id="system-storage-information"><strong>System Storage Information</strong><a class="headerlink" href="#system-storage-information" title="Permanent link">&para;</a></h1>
+<p>The module also provides information about storage sizes.</p>
+<p>Examples:</p>
+<div class="highlight"><pre><span></span><code><span class="n">character_storage_size</span>
+<span class="n">numeric_storage_size</span>
+<span class="n">file_storage_size</span>
+</code></pre></div>
+<p>These return the number of bits used for character, numeric, and file storage units on the current system.</p>
+<p>Most programmers rarely need these values directly.</p>
+<hr />
+<h1 id="end-of-file-constants"><strong>End-of-File Constants</strong><a class="headerlink" href="#end-of-file-constants" title="Permanent link">&para;</a></h1>
+<p>The module provides special values used during file reading:</p>
+<div class="highlight"><pre><span></span><code><span class="n">iostat_end</span>
+<span class="n">iostat_eor</span>
+</code></pre></div>
+<p>These can be used when checking the result of a file read operation.</p>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">status</span>
+
+<span class="k">read</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">iostat</span><span class="o">=</span><span class="n">status</span><span class="p">)</span><span class="w"> </span><span class="n">x</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">status</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">iostat_end</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">    print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;End of file reached&quot;</span>
+<span class="k">end if</span>
+</code></pre></div>
+<hr />
+<h1 id="what-you-will-use-most-often"><strong>What You Will Use Most Often</strong><a class="headerlink" href="#what-you-will-use-most-often" title="Permanent link">&para;</a></h1>
+<p>In everyday scientific programming, the most commonly used features are:</p>
+<div class="highlight"><pre><span></span><code><span class="k">use </span><span class="n">iso_fortran_env</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">int32</span>
+<span class="n">int64</span>
+<span class="n">real64</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">input_unit</span>
+<span class="n">output_unit</span>
+<span class="n">error_unit</span>
+</code></pre></div>
+<p>The compiler and source-code information functions are mainly useful for debugging, while many of the other features are intended for advanced applications and system programming.</p>
+<hr />
+<h1 id="summary"><strong>Summary</strong><a class="headerlink" href="#summary" title="Permanent link">&para;</a></h1>
+<p><code>iso_fortran_env</code> is a standard intrinsic module that provides:</p>
+<ul>
+<li>portable integer and floating-point kinds</li>
+<li>standard input, output, and error streams</li>
+<li>compiler information</li>
+<li>source-code location information</li>
+<li>file and storage constants</li>
+<li>various system-dependent definitions</li>
+</ul>
+<p>It is one of the most useful intrinsic modules in modern Fortran and is commonly included in scientific programs.</p>
+<p>This is about the level I’d expect in a second-year scientific programming course: enough detail to understand what the names mean without getting into compiler implementation details or coarray parallelism.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

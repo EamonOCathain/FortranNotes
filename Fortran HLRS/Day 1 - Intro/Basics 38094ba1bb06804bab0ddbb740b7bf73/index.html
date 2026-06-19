@@ -1,0 +1,991 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://eamonocathain.github.io/FortranNotes/Fortran%20HLRS/Day%201%20-%20Intro/Basics%2038094ba1bb06804bab0ddbb740b7bf73/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Basics - Fortran HLRS Notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#basics" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Fortran HLRS Notes" class="md-header__button md-logo" aria-label="Fortran HLRS Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Fortran HLRS Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Basics
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Fortran HLRS Notes" class="md-nav__button md-logo" aria-label="Fortran HLRS Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Fortran HLRS Notes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Notes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Notes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arithmetic%20Basics%2038094ba1bb068058b949c5f878eaa564/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arithmetic Basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Declaration%20of%20Variables%2038094ba1bb06801ab840c3a5f06aaa46/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Declaration of Variables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../If%20and%20Else%2038094ba1bb068028b475fa54f910cb48/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    If and Else
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Loops%2038094ba1bb06804ab400ccb6252c4b0a/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Loops
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arrays%2038094ba1bb068047a6b8d5492b19afb7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arrays
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Functions%2038194ba1bb0680d69729ec69d7e35a77/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Subroutines%2038194ba1bb0680bf85edc8bae2a3166d/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Subroutines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Modules%2038194ba1bb0680daaa3bedcff442c0df/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="basics">Basics<a class="headerlink" href="#basics" title="Permanent link">&para;</a></h1>
+<h1 id="basics_1">Basics<a class="headerlink" href="#basics_1" title="Permanent link">&para;</a></h1>
+<h3 id="basic-data-types"><strong>Basic Data Types</strong><a class="headerlink" href="#basic-data-types" title="Permanent link">&para;</a></h3>
+<p>Fortran provides several intrinsic data types for variables and constants:</p>
+<ul>
+<li>Integer numbers (<code>integer</code>)</li>
+<li>Floating-point numbers (<code>real</code>)</li>
+<li>Complex floating-point numbers (<code>complex</code>)</li>
+<li>Character/string data (<code>character</code>)</li>
+</ul>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span>
+<span class="kt">real</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3.14</span>
+<span class="kt">complex</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">2.0</span><span class="p">)</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Brian&quot;</span>
+</code></pre></div>
+<hr />
+<h3 id="variables-and-operations"><strong>Variables and Operations</strong><a class="headerlink" href="#variables-and-operations" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Variable declarations</li>
+<li>Procedures operating on these data types</li>
+<li>Assignments:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span>
+</code></pre></div>
+<p>(content of <code>a</code> ← content of <code>b</code>)</p>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span>
+
+<span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span>
+<span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span>
+</code></pre></div>
+<hr />
+<h3 id="operators"><strong>Operators</strong><a class="headerlink" href="#operators" title="Permanent link">&para;</a></h3>
+<p>Arithmetic operators:</p>
+<div class="highlight"><pre><span></span><code><span class="o">+</span><span class="w">  </span><span class="o">-</span><span class="w">  </span><span class="o">*</span><span class="w">  </span><span class="o">/</span><span class="w">  </span><span class="o">**</span>
+</code></pre></div>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">3</span>
+<span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">5</span>
+<span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">**</span><span class="w"> </span><span class="mi">3</span>
+</code></pre></div>
+<p>Logical operators:</p>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w">  </span><span class="p">.</span><span class="nb">or</span><span class="p">.</span><span class="w">  </span><span class="p">.</span><span class="nb">not</span><span class="p">.</span>
+</code></pre></div>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">    print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Both positive&quot;</span>
+<span class="k">end if</span>
+</code></pre></div>
+<hr />
+<h3 id="arrays"><strong>Arrays</strong><a class="headerlink" href="#arrays" title="Permanent link">&para;</a></h3>
+<p>For storing indexed data:</p>
+<div class="highlight"><pre><span></span><code><span class="n">a</span><span class="p">(</span><span class="n">ii</span><span class="p">,</span><span class="n">jj</span><span class="p">)</span>
+</code></pre></div>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">real</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">a</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="n">a</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">5.0</span>
+</code></pre></div>
+<hr />
+<h2 id="control-flow-constructs"><strong>Control Flow Constructs</strong><a class="headerlink" href="#control-flow-constructs" title="Permanent link">&para;</a></h2>
+<p>Used to influence the flow of execution.</p>
+<h3 id="loops"><strong>Loops</strong><a class="headerlink" href="#loops" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">do</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="k">end do</span>
+</code></pre></div>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="k">do </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span>
+<span class="w">    </span><span class="k">print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">i</span>
+<span class="k">end do</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="k">do</span><span class="w"> </span><span class="k">concurrent</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="k">end do</span>
+</code></pre></div>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="k">do</span><span class="w"> </span><span class="k">concurrent</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mi">5</span><span class="p">)</span>
+<span class="w">    </span><span class="n">a</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="o">**</span><span class="mi">2</span>
+<span class="k">end do</span>
+</code></pre></div>
+<hr />
+<h3 id="branching"><strong>Branching</strong><a class="headerlink" href="#branching" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="k">end if</span>
+</code></pre></div>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">    print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Positive&quot;</span>
+<span class="k">else</span>
+<span class="k">    print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Not positive&quot;</span>
+<span class="k">end if</span>
+</code></pre></div>
+<p>or</p>
+<div class="highlight"><pre><span></span><code><span class="k">select case</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="k">end select</span>
+</code></pre></div>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="k">select case</span><span class="w"> </span><span class="p">(</span><span class="n">day</span><span class="p">)</span>
+<span class="k">case</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="w">    </span><span class="k">print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Monday&quot;</span>
+<span class="k">case</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="w">    </span><span class="k">print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Tuesday&quot;</span>
+<span class="k">case </span><span class="n">default</span>
+<span class="w">    </span><span class="k">print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Other day&quot;</span>
+<span class="k">end select</span>
+</code></pre></div>
+<h2 id="program-structure"><strong>Program Structure</strong><a class="headerlink" href="#program-structure" title="Permanent link">&para;</a></h2>
+<p>Simple programs become difficult to maintain as they grow larger.</p>
+<p>To build large programs, code is split into <strong>small program units</strong> that:</p>
+<ul>
+<li>Perform a specific task</li>
+<li>Have a limited variable scope</li>
+<li>Are easier to test and debug</li>
+<li>Can be reused in multiple places</li>
+</ul>
+<h3 id="procedures"><strong>Procedures</strong><a class="headerlink" href="#procedures" title="Permanent link">&para;</a></h3>
+<h3 id="function"><strong>Function</strong><a class="headerlink" href="#function" title="Permanent link">&para;</a></h3>
+<p>Returns a value.</p>
+<div class="highlight"><pre><span></span><code><span class="k">function </span><span class="n">square</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="w">    </span><span class="n">square</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="o">*</span><span class="n">x</span>
+<span class="k">end function </span><span class="n">square</span>
+</code></pre></div>
+<h3 id="subroutine"><strong>Subroutine</strong><a class="headerlink" href="#subroutine" title="Permanent link">&para;</a></h3>
+<p>Performs a task without returning a value directly.</p>
+<div class="highlight"><pre><span></span><code><span class="k">subroutine </span><span class="n">print_message</span><span class="p">()</span>
+<span class="w">    </span><span class="k">print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Hello&quot;</span>
+<span class="k">end subroutine </span><span class="n">print_message</span>
+</code></pre></div>
+<hr />
+<h2 id="user-defined-data-types"><strong>User-Defined Data Types</strong><a class="headerlink" href="#user-defined-data-types" title="Permanent link">&para;</a></h2>
+<p>For storing more complex data structures.</p>
+<div class="highlight"><pre><span></span><code><span class="k">type</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">Particle</span>
+<span class="w">    </span><span class="kt">real</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">x</span>
+<span class="w">    </span><span class="kt">real</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">y</span>
+<span class="w">    </span><span class="kt">real</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">mass</span>
+<span class="k">end type </span><span class="n">Particle</span>
+</code></pre></div>
+<hr />
+<h2 id="modules"><strong>Modules</strong><a class="headerlink" href="#modules" title="Permanent link">&para;</a></h2>
+<p>Used to group related data and procedures together.</p>
+<div class="highlight"><pre><span></span><code><span class="k">module </span><span class="n">math_utils</span>
+<span class="k">contains</span>
+<span class="k">    function </span><span class="n">square</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="w">        </span><span class="n">square</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="o">*</span><span class="n">x</span>
+<span class="w">    </span><span class="k">end function </span><span class="n">square</span>
+<span class="k">end module </span><span class="n">math_utils</span>
+</code></pre></div>
+<h2 id="character-set-and-basic-syntax"><strong>Character Set and Basic Syntax</strong><a class="headerlink" href="#character-set-and-basic-syntax" title="Permanent link">&para;</a></h2>
+<p><strong>Names</strong></p>
+<ul>
+<li>Names may contain letters, numbers, and <code>_</code></li>
+<li>Names must start with a letter</li>
+<li>Up to 63 characters</li>
+<li>Fortran is not case-sensitive</li>
+<li>Usually one statement per line</li>
+<li>Multiple statements can be separated by <code>;</code></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.</span><span class="p">;</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2.0</span><span class="o">*</span><span class="n">a</span>
+</code></pre></div>
+<ul>
+<li>Source forms:<ul>
+<li><code>.f</code> = fixed form (old)</li>
+<li><code>.f90</code> = free form (modern)</li>
+</ul>
+</li>
+<li>Labels can be used as branch targets</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">0.</span><span class="p">)</span><span class="w"> </span><span class="k">goto</span><span class="w"> </span><span class="mi">1000</span>
+<span class="mi">1000</span><span class="w"> </span><span class="k">continue</span>
+</code></pre></div>
+<ul>
+<li><code>::</code> separates the type from variable names</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kt">real</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span>
+<span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">n</span>
+</code></pre></div>
+<h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h2>
+<p><strong>Full:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">call</span> <span class="n">sparse_matrix_solver</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span><span class="n">rhs</span><span class="p">,</span><span class="n">LHS</span><span class="p">,</span><span class="n">n_max</span><span class="p">)</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mf">0.</span><span class="p">;</span> <span class="n">b</span> <span class="o">=</span> <span class="mf">2.</span><span class="o">*</span><span class="n">a</span>
+<span class="k">if</span> <span class="p">(</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="mf">0.</span><span class="p">)</span> <span class="n">goto</span> <span class="mi">1000</span> <span class="err">!</span> <span class="ow">not</span> <span class="n">recommended</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">exp</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> 
+<span class="mi">1000</span> <span class="k">continue</span>
+</code></pre></div>
+<p>Call a subroutine.</p>
+<div class="highlight"><pre><span></span><code><span class="k">call </span><span class="n">sparse_matrix_solver</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span><span class="n">rhs</span><span class="p">,</span><span class="n">LHS</span><span class="p">,</span><span class="n">n_max</span><span class="p">)</span>
+</code></pre></div>
+<p>Two assignments on one line.</p>
+<div class="highlight"><pre><span></span><code><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.</span><span class="p">;</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2.</span><span class="o">*</span><span class="n">a</span>
+</code></pre></div>
+<p>Jump to label <code>1000</code> if condition is true.</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">0.</span><span class="p">)</span><span class="w"> </span><span class="k">goto</span><span class="w"> </span><span class="mi">1000</span>
+</code></pre></div>
+<p>Compute e^b.</p>
+<div class="highlight"><pre><span></span><code><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">exp</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</code></pre></div>
+<p>Label marking a possible jump destination.</p>
+<div class="highlight"><pre><span></span><code><span class="mi">1000</span><span class="w"> </span><span class="k">continue</span>
+</code></pre></div>
+<h3 id="free-source-form-modern-fortran"><strong>Free Source Form (Modern Fortran)</strong><a class="headerlink" href="#free-source-form-modern-fortran" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Standard source format (<code>.f90</code> files)</li>
+<li>Up to 132 characters per line (much higher in modern standards)</li>
+<li>Multiple statements can be separated by <code>;</code></li>
+<li>Comments start with <code>!</code></li>
+<li>Continue a statement onto the next line with <code>&amp;</code></li>
+<li>Tabs are not required</li>
+<li>Indentation improves readability but has no effect on execution (unlike Python)</li>
+</ul>
+<h3 id="example_1">Example<a class="headerlink" href="#example_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">program </span><span class="n">centigrade_to_fahrenheit</span>
+
+<span class="k">implicit none</span>
+
+<span class="c">! This program converts a Centigrade temperature (C)</span>
+<span class="c">! to Fahrenheit (F) via the formula F = 9/5 * C + 32</span>
+
+<span class="kt">real</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">deg_fah</span><span class="p">,</span><span class="w"> </span><span class="n">deg_cen</span>
+
+<span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;What is the Centigrade temperature?&#39;</span>
+<span class="k">read</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="n">deg_cen</span>
+
+<span class="n">deg_fah</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mf">9.0</span><span class="o">*</span><span class="n">deg_cen</span><span class="o">/</span><span class="mf">5.0</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">3</span><span class="mf">2.0</span>
+
+<span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Centigrades:&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">deg_cen</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Fahrenheit:&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">deg_fah</span>
+
+<span class="k">end program </span><span class="n">centigrade_to_fahrenheit</span>
+</code></pre></div>
+<ul>
+<li><code>program ... end program</code> defines the start and end of the program.</li>
+<li><code>implicit none</code> requires all variables to be declared explicitly.</li>
+<li><code>!</code> denotes a comment.</li>
+<li><code>real :: deg_fah, deg_cen</code> declares two floating-point variables.</li>
+<li><code>write(*,*)</code> prints output to the screen.</li>
+<li><code>read(*,*)</code> reads input from the keyboard.</li>
+<li><code>deg_fah = ...</code> performs the Celsius → Fahrenheit conversion.</li>
+<li>The final <code>write(*,*)</code> displays the input and calculated result.</li>
+</ul>
+<h3 id="example-2">Example 2<a class="headerlink" href="#example-2" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">program </span><span class="n">simple_IO_program</span>
+
+<span class="c">! all variables must be declared</span>
+<span class="k">implicit none</span>
+
+<span class="c">! set the variable types</span>
+<span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">jj</span>
+<span class="kt">real</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">rr</span>
+<span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="k">allocatable</span><span class="p">,</span><span class="w"> </span><span class="k">dimension</span><span class="p">(:)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">arr</span>
+<span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">my_unit</span>
+<span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">ll</span>
+
+<span class="c">! Setting values</span>
+<span class="n">jj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">101</span>
+<span class="n">rr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.234</span>
+
+<span class="c">! Define Arrays - Here a one dimensionsal arrays with numbers 1-5 multiplied by 0.1</span>
+<span class="n">arr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[(</span><span class="mf">0.1</span><span class="o">*</span><span class="kt">real</span><span class="p">(</span><span class="n">ll</span><span class="p">),</span><span class="w"> </span><span class="n">ll</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">)]</span>
+
+<span class="c">! </span>
+<span class="k">open</span><span class="p">(</span><span class="n">newunit</span><span class="o">=</span><span class="n">my_unit</span><span class="p">,</span><span class="w"> </span><span class="k">file</span><span class="o">=</span><span class="s1">&#39;my_file.dat&#39;</span><span class="p">)</span><span class="w"> </span><span class="c">! connection to an exteranl file</span>
+
+<span class="c">! This defines how to print the results</span>
+<span class="k">write</span><span class="p">(</span><span class="n">my_unit</span><span class="p">,</span><span class="s1">&#39;(a,i0,a,f0.3,a,*(e0.2,1x))&#39;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;jj=&#39;</span><span class="p">,</span><span class="n">jj</span><span class="p">,</span><span class="s1">&#39; rr=&#39;</span><span class="p">,</span><span class="n">rr</span><span class="p">,</span><span class="s1">&#39; arr=&#39;</span><span class="p">,</span><span class="n">arr</span><span class="w"> </span><span class="c">! a,i0,f0.3,e0.2 are edit descriptors</span>
+
+<span class="k">end program </span><span class="n">simple_IO_program</span>
+</code></pre></div>
+<ul>
+<li><code>allocatable, dimension(:)</code> declares a dynamically-sized 1D array.</li>
+<li><code>arr = [(0.1*real(ll), ll=1,5)]</code> creates the array <code>[0.1, 0.2, 0.3, 0.4, 0.5]</code>.</li>
+<li><code>open(...)</code> opens a file and associates it with a unit number (<code>my_unit</code>).</li>
+<li><code>write(my_unit, ...)</code> writes data to the file rather than to the screen.</li>
+<li>The format string (<code>'(a,i0,a,f0.3,a,*(e0.2,1x))'</code>) controls how the output is printed.</li>
+<li>Result written to <code>my_file.dat</code>:</li>
+</ul>
+<p><strong>So to explain the printing variables line in more detail:</strong></p>
+<p><em>The assignment of the variables - left defines variable type and right define the order</em> </p>
+<div class="highlight"><pre><span></span><code><span class="k">write</span><span class="p">(</span><span class="n">my_unit</span><span class="p">,</span><span class="s1">&#39;(a,i0,a,f0.3,a,*(e0.2,1x))&#39;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;jj=&#39;</span><span class="p">,</span><span class="n">jj</span><span class="p">,</span><span class="s1">&#39; rr=&#39;</span><span class="p">,</span><span class="n">rr</span><span class="p">,</span><span class="s1">&#39; arr=&#39;</span><span class="p">,</span><span class="n">arr</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th><strong>Descriptor</strong></th>
+<th><strong>Meaning</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>a</code></td>
+<td>Character string</td>
+</tr>
+<tr>
+<td><code>i0</code></td>
+<td>Integer (minimum width)</td>
+</tr>
+<tr>
+<td><code>f0.3</code></td>
+<td>Fixed-point real with 3 decimal places</td>
+</tr>
+<tr>
+<td><code>e0.2</code></td>
+<td>Scientific notation with 2 decimal places</td>
+</tr>
+<tr>
+<td><code>1x</code></td>
+<td>Insert one blank space</td>
+</tr>
+<tr>
+<td><code>*(...)</code></td>
+<td>Repeat format for all remaining array elements</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code>a      -&gt; &#39;jj=&#39;
+i0     -&gt; jj
+
+a      -&gt; &#39; rr=&#39;
+f0.3   -&gt; rr
+
+a      -&gt; &#39; arr=&#39;
+*(e0.2,1x) -&gt; every element of arr
+</code></pre></div>
+<p>Output:</p>
+<div class="highlight"><pre><span></span><code>jj=101 rr=1.234 arr=0.10E+0 0.20E+0 0.30E+0 0.40E+0 0.50E+0
+</code></pre></div>
+<h2 id="example-3">Example 3<a class="headerlink" href="#example-3" title="Permanent link">&para;</a></h2>
+<p><em>Programme to cancel multiple lines</em></p>
+<p><em>Overall, the program reads a file line-by-line and writes only lines that differ from the immediately preceding line.</em></p>
+<div class="highlight"><pre><span></span><code><span class="k">program </span><span class="n">cancel_multiple_lines</span>
+
+<span class="w">    </span><span class="k">implicit none</span><span class="w">      </span><span class="c">! all variables have to be declared</span>
+
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">131</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">line</span><span class="p">,</span><span class="n">old_line</span><span class="w">     </span><span class="c">! string variables</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w">            </span><span class="kd">::</span><span class="w"> </span><span class="n">in_unit</span><span class="p">,</span><span class="w"> </span><span class="n">out_unit</span><span class="w"> </span><span class="c">! integer variables</span>
+
+<span class="w">    </span><span class="k">open</span><span class="p">(</span><span class="n">newunit</span><span class="o">=</span><span class="n">in_unit</span><span class="p">,</span><span class="k">file</span><span class="o">=</span><span class="s1">&#39;input&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="k">open</span><span class="p">(</span><span class="n">newunit</span><span class="o">=</span><span class="n">out_unit</span><span class="p">,</span><span class="k">file</span><span class="o">=</span><span class="s1">&#39;output&#39;</span><span class="p">)</span><span class="w">    </span><span class="c">! connection to files</span>
+
+<span class="w">    </span><span class="n">old_line</span><span class="o">=</span><span class="s1">&#39; &#39;</span>
+
+<span class="w">    </span><span class="k">do</span><span class="w">      </span><span class="c">! endless loop</span>
+
+<span class="w">        </span><span class="c">! we will leave to 1000 continue at the end of the file</span>
+
+<span class="w">        </span><span class="k">read</span><span class="p">(</span><span class="n">in_unit</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">,</span><span class="k">end</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span><span class="w"> </span><span class="n">line</span><span class="w">   </span><span class="c">! read line ; at end of file goto 1000</span>
+
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">line</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="n">old_line</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+
+<span class="w">            </span><span class="c">! we write only the new lines with a preamble</span>
+
+<span class="w">            </span><span class="k">write</span><span class="p">(</span><span class="n">out_unit</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;fx -c &#39;</span><span class="p">,</span><span class="nb">trim</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">end if</span>
+
+<span class="k">        </span><span class="n">old_line</span><span class="o">=</span><span class="n">line</span>
+
+<span class="w">    </span><span class="k">end do</span><span class="w">      </span><span class="c">! end of loop</span>
+
+<span class="mi">1000</span><span class="w"> </span><span class="k">continue</span>
+
+<span class="k">end program </span><span class="n">cancel_multiple_lines</span>
+</code></pre></div>
+<ul>
+<li><code>character(len=131)</code> declares two strings, <code>line</code> and <code>old_line</code>.</li>
+<li><code>open(...)</code> opens the input and output files and assigns unit numbers.</li>
+<li><code>old_line=' '</code> initializes <code>old_line</code> to a blank string.</li>
+<li><code>do ... end do</code> creates an infinite loop.</li>
+<li><code>read(..., end=1000)</code> reads one line from the input file; when the end of the file is reached, execution jumps to label <code>1000</code>.</li>
+<li><code>if(line /= old_line)</code> checks whether the current line differs from the previous line (<code>/=</code> means “not equal”).</li>
+<li><code>trim(line)</code> removes trailing spaces from the string.</li>
+<li><code>write(out_unit,*)</code> writes the line to the output file, prefixed with <code>"fx -c "</code>.</li>
+<li><code>old_line=line</code> stores the current line for comparison during the next iteration.</li>
+<li><code>1000 continue</code> is the destination reached when the end of the input file is encountered.</li>
+<li>Overall, the program reads a file line-by-line and writes only lines that differ from the immediately preceding line.</li>
+</ul>
+<h2 id="example-3-ascii">Example 3 - ASCII<a class="headerlink" href="#example-3-ascii" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">program </span><span class="n">ascii</span>
+
+<span class="k">implicit none</span>
+
+<span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">ii</span><span class="p">,</span><span class="w"> </span><span class="n">imax</span>
+
+<span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">out_unit</span>
+
+<span class="k">open</span><span class="p">(</span><span class="n">newunit</span><span class="o">=</span><span class="n">out_unit</span><span class="p">,</span><span class="k">file</span><span class="o">=</span><span class="s1">&#39;ascii.dat&#39;</span><span class="p">)</span>
+
+<span class="n">imax</span><span class="o">=</span><span class="mi">128</span>
+
+<span class="k">do </span><span class="n">ii</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">imax</span><span class="w">      </span><span class="c">! loop with control variables</span>
+
+<span class="w">    </span><span class="k">write</span><span class="p">(</span><span class="n">out_unit</span><span class="p">,</span><span class="s1">&#39;(a,i0,a,a)&#39;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;char(&#39;</span><span class="p">,</span><span class="n">ii</span><span class="p">,</span><span class="s1">&#39;)=&#39;</span><span class="p">,</span><span class="nb">char</span><span class="p">(</span><span class="n">ii</span><span class="p">)</span>
+
+<span class="k">end do</span>
+
+<span class="k">end program </span><span class="n">ascii</span>
+</code></pre></div>
+<ul>
+<li><code>integer :: ii, imax</code> declares loop variables.</li>
+<li><code>integer :: out_unit</code> stores the file unit number.</li>
+<li><code>open(...)</code> opens the file <code>ascii.dat</code> for writing.</li>
+<li><code>imax=128</code> sets the upper limit of the loop.</li>
+<li><code>do ii=1,imax</code> loops from 1 to 128.</li>
+<li><code>char(ii)</code> converts the integer <code>ii</code> into its corresponding ASCII character.<ul>
+<li>inbuilt fortran function</li>
+</ul>
+</li>
+<li><code>write(...)</code> writes the integer and character to the file.</li>
+<li><code>end do</code> ends the loop.</li>
+<li>The program creates a file containing the ASCII table.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

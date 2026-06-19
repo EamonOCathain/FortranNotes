@@ -1,0 +1,1115 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://eamonocathain.github.io/FortranNotes/Fortran%20HLRS/Modules%2038194ba1bb0680daaa3bedcff442c0df/">
+      
+      
+        <link rel="prev" href="../Subroutines%2038194ba1bb0680bf85edc8bae2a3166d/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Modules - Fortran HLRS Notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#modules" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Fortran HLRS Notes" class="md-header__button md-logo" aria-label="Fortran HLRS Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Fortran HLRS Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Modules
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Fortran HLRS Notes" class="md-nav__button md-logo" aria-label="Fortran HLRS Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Fortran HLRS Notes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Notes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Notes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Arithmetic%20Basics%2038094ba1bb068058b949c5f878eaa564/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arithmetic Basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Declaration%20of%20Variables%2038094ba1bb06801ab840c3a5f06aaa46/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Declaration of Variables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../If%20and%20Else%2038094ba1bb068028b475fa54f910cb48/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    If and Else
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Loops%2038094ba1bb06804ab400ccb6252c4b0a/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Loops
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Arrays%2038094ba1bb068047a6b8d5492b19afb7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arrays
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Functions%2038194ba1bb0680d69729ec69d7e35a77/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Subroutines%2038194ba1bb0680bf85edc8bae2a3166d/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Subroutines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="modules">Modules<a class="headerlink" href="#modules" title="Permanent link">&para;</a></h1>
+<h1 id="modules_1"><strong>Modules</strong><a class="headerlink" href="#modules_1" title="Permanent link">&para;</a></h1>
+<p>A <strong>module</strong> is a program unit used to organize and share data, procedures, and derived types.</p>
+<p>Modules help structure large programs by grouping related code into a single reusable unit.</p>
+<p>Modern Fortran programs should be organized around modules.</p>
+<p>It is an encapsulation mechanism.. it can encapsulate:</p>
+<ul>
+<li>shared (global) data</li>
+<li>derived types</li>
+<li>procedures</li>
+<li>interfaces</li>
+</ul>
+<hr />
+<h1 id="why-use-modules"><strong>Why Use Modules?</strong><a class="headerlink" href="#why-use-modules" title="Permanent link">&para;</a></h1>
+<p>As programs grow larger, it becomes difficult to manage all variables and procedures in one file.</p>
+<p>Modules allow related functionality to be grouped together.</p>
+<p>For example:</p>
+<ul>
+<li>Mathematical functions</li>
+<li>File I/O routines</li>
+<li>Physical constants</li>
+<li>Model parameters</li>
+<li>Derived types</li>
+</ul>
+<p>can each be placed in their own module.</p>
+<p>This improves:</p>
+<ul>
+<li>readability</li>
+<li>maintainability</li>
+<li>code reuse</li>
+<li>debugging</li>
+</ul>
+<hr />
+<h1 id="modules-vs-procedures-vs-module-procedures"><strong>Modules vs Procedures vs Module Procedures</strong><a class="headerlink" href="#modules-vs-procedures-vs-module-procedures" title="Permanent link">&para;</a></h1>
+<p>A module is a <strong>container</strong> that organizes and shares code.</p>
+<p>The module itself does not perform calculations.</p>
+<p>It simply contains and organizes things.</p>
+<p>The procedures are the <strong>things inside the container</strong>.</p>
+<p>A procedure performs work.</p>
+<p>Procedures are:</p>
+<ul>
+<li>Functions</li>
+<li>Subroutines</li>
+</ul>
+<p>A <strong>module procedure</strong> is simply a function or subroutine that lives inside a module.</p>
+<h3 id="module-procedure-example">Module Procedure Example<a class="headerlink" href="#module-procedure-example" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">module </span><span class="n">maths</span>
+
+<span class="k">contains</span>
+
+<span class="k">    function </span><span class="n">square</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="k">result</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+<span class="w">        </span><span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">x</span>
+<span class="w">        </span><span class="kt">real</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">y</span>
+
+<span class="w">        </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="w">    </span><span class="k">end function </span><span class="n">square</span>
+
+<span class="k">end module </span><span class="n">maths</span>
+</code></pre></div>
+<hr />
+<h1 id="basic-structure"><strong>Basic Structure</strong><a class="headerlink" href="#basic-structure" title="Permanent link">&para;</a></h1>
+<p>A module has two main parts separated by the keyword:</p>
+<div class="highlight"><pre><span></span><code><span class="k">contains</span>
+</code></pre></div>
+<p>General structure:</p>
+<div class="highlight"><pre><span></span><code><span class="k">module </span><span class="n">module_name</span>
+
+<span class="w">    </span><span class="k">implicit none</span>
+
+<span class="w">    </span><span class="c">! Specification part</span>
+
+<span class="k">contains</span>
+
+<span class="w">    </span><span class="c">! Procedures</span>
+
+<span class="k">end module </span><span class="n">module_name</span>
+</code></pre></div>
+<p>The specification part contains declarations.</p>
+<p>The procedure part contains functions and subroutines.</p>
+<hr />
+<h1 id="specification-part"><strong>Specification Part</strong><a class="headerlink" href="#specification-part" title="Permanent link">&para;</a></h1>
+<p>The specification part appears before <code>contains</code>.</p>
+<p>It may contain:</p>
+<ul>
+<li>variables</li>
+<li>constants</li>
+<li>derived types</li>
+<li>interfaces</li>
+<li>procedure declarations</li>
+</ul>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="k">module </span><span class="n">constants</span>
+
+<span class="w">    </span><span class="k">implicit none</span>
+
+<span class="k">    </span><span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">pi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3.14159</span>
+
+<span class="k">end module </span><span class="n">constants</span>
+</code></pre></div>
+<hr />
+<h1 id="intrinsic-modules"><strong>Intrinsic Modules</strong><a class="headerlink" href="#intrinsic-modules" title="Permanent link">&para;</a></h1>
+<p>See the independent page on iso_fortran_env <a href="../Iso_fortran_env%20Module%2038294ba1bb068014aea9cdd4fd178731/">here</a></p>
+<p>Some modules are provided automatically by the compiler.</p>
+<p>The most commonly used is:</p>
+<div class="highlight"><pre><span></span><code><span class="k">use </span><span class="n">iso_fortran_env</span>
+</code></pre></div>
+<p>This module provides portable definitions such as:</p>
+<div class="highlight"><pre><span></span><code><span class="n">int8</span>
+<span class="n">int16</span>
+<span class="n">int32</span>
+<span class="n">int64</span>
+
+<span class="n">real32</span>
+<span class="n">real64</span>
+<span class="n">real128</span>
+</code></pre></div>
+<p>Using these definitions helps make programs portable between different systems and compilers.</p>
+<hr />
+<h1 id="procedure-part"><strong>Procedure Part</strong><a class="headerlink" href="#procedure-part" title="Permanent link">&para;</a></h1>
+<p>The procedure part appears after <code>contains</code>.</p>
+<p>It contains the implementation of functions and subroutines.</p>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="k">module </span><span class="n">maths</span>
+
+<span class="w">    </span><span class="k">implicit none</span>
+
+<span class="k">contains</span>
+
+<span class="k">    function </span><span class="n">square</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="k">result</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+<span class="w">        </span><span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">x</span>
+<span class="w">        </span><span class="kt">real</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">y</span>
+
+<span class="w">        </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="w">    </span><span class="k">end function </span><span class="n">square</span>
+
+<span class="k">end module </span><span class="n">maths</span>
+</code></pre></div>
+<p>Functions and subroutines defined inside a module are called <strong>module procedures</strong>.</p>
+<hr />
+<h1 id="internal-procedures"><strong>Internal Procedures</strong><a class="headerlink" href="#internal-procedures" title="Permanent link">&para;</a></h1>
+<p>A procedure may contain other procedures using <code>contains</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="k">subroutine </span><span class="n">outer</span><span class="p">()</span>
+
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">x</span>
+
+<span class="k">contains</span>
+
+<span class="k">    subroutine </span><span class="n">inner</span><span class="p">()</span>
+
+<span class="w">        </span><span class="k">print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">x</span>
+
+<span class="w">    </span><span class="k">end subroutine </span><span class="n">inner</span>
+
+<span class="k">end subroutine </span><span class="n">outer</span>
+</code></pre></div>
+<p>The nested procedure is called an <strong>internal procedure</strong>.</p>
+<p>Internal procedures:</p>
+<ul>
+<li>can only be called by their host procedure</li>
+<li>automatically have access to variables declared in the host procedure</li>
+<li>are useful for helper routines that are not needed elsewhere</li>
+</ul>
+<hr />
+<h1 id="external-procedures"><strong>External Procedures</strong><a class="headerlink" href="#external-procedures" title="Permanent link">&para;</a></h1>
+<p>A procedure defined outside a module is called an <strong>external procedure</strong>.</p>
+<div class="highlight"><pre><span></span><code><span class="k">function </span><span class="n">square</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="w">    </span><span class="kt">real</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">square</span>
+<span class="w">    </span><span class="kt">real</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">x</span>
+
+<span class="w">    </span><span class="n">square</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="k">end function </span><span class="n">square</span>
+</code></pre></div>
+<p>External procedures are common in older Fortran programs and libraries.</p>
+<p>Modern Fortran generally prefers module procedures because the compiler can perform better checking of arguments and interfaces.</p>
+<hr />
+<h1 id="using-a-module"><strong>Using a Module</strong><a class="headerlink" href="#using-a-module" title="Permanent link">&para;</a></h1>
+<p>A program accesses the contents of a module using the <code>use</code> statement.</p>
+<div class="highlight"><pre><span></span><code><span class="k">use </span><span class="n">module_name</span>
+</code></pre></div>
+<p>This makes the module’s public variables, derived types, functions, and subroutines available to the program.</p>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="k">program </span><span class="n">example</span>
+
+<span class="w">    </span><span class="k">use </span><span class="n">maths</span>
+
+<span class="w">    </span><span class="k">implicit none</span>
+
+<span class="k">    print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">square</span><span class="p">(</span><span class="mf">5.0</span><span class="p">)</span>
+
+<span class="k">end program </span><span class="n">example</span>
+</code></pre></div>
+<p>Output:</p>
+<div class="highlight"><pre><span></span><code>25.0
+</code></pre></div>
+<hr />
+<h1 id="importing-specific-names"><strong>Importing Specific Names</strong><a class="headerlink" href="#importing-specific-names" title="Permanent link">&para;</a></h1>
+<p>By default, all public entities from a module are imported.</p>
+<p>To import only selected names, use:</p>
+<div class="highlight"><pre><span></span><code><span class="k">use </span><span class="n">module_name</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">name1</span><span class="p">,</span><span class="w"> </span><span class="n">name2</span>
+</code></pre></div>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="k">use </span><span class="n">constants</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">pi</span>
+</code></pre></div>
+<p>Using <code>only</code> makes dependencies clearer and helps avoid name conflicts.</p>
+<hr />
+<h1 id="renaming-imports"><strong>Renaming Imports</strong><a class="headerlink" href="#renaming-imports" title="Permanent link">&para;</a></h1>
+<p>Imported names can be given a different local name using:</p>
+<div class="highlight"><pre><span></span><code><span class="k">use </span><span class="n">module_name</span><span class="p">,</span><span class="w"> </span><span class="n">local_name</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">name_in_module</span>
+</code></pre></div>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="k">use </span><span class="n">constants</span><span class="p">,</span><span class="w"> </span><span class="n">circle_pi</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">pi</span>
+</code></pre></div>
+<p>The variable <code>pi</code> from the module is now available locally as <code>circle_pi</code>.</p>
+<p>Renaming can be useful when:</p>
+<ul>
+<li>two modules contain variables with the same name</li>
+<li>a more descriptive local name is desired</li>
+<li>name conflicts need to be avoided</li>
+</ul>
+<hr />
+<h1 id="sharing-variables"><strong>Sharing Variables</strong><a class="headerlink" href="#sharing-variables" title="Permanent link">&para;</a></h1>
+<p>Variables declared in a module can be accessed by any program or procedure that uses the module.</p>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="k">module </span><span class="n">constants</span>
+
+<span class="w">    </span><span class="k">implicit none</span>
+
+<span class="k">    </span><span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">pi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3.14159</span>
+
+<span class="k">end module </span><span class="n">constants</span>
+</code></pre></div>
+<p>Used as:</p>
+<div class="highlight"><pre><span></span><code><span class="k">program </span><span class="n">circle</span>
+
+<span class="w">    </span><span class="k">use </span><span class="n">constants</span>
+
+<span class="w">    </span><span class="k">implicit none</span>
+
+<span class="k">    print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">pi</span>
+
+<span class="k">end program </span><span class="n">circle</span>
+</code></pre></div>
+<p>Module variables provide a convenient way to share information throughout a program.</p>
+<p>However, frequently modified module variables behave like global variables and should be used carefully, as they can introduce side effects and make programs more difficult to understand and maintain.</p>
+<hr />
+<h1 id="global-variables-and-side-effects"><strong>Global Variables and Side Effects</strong><a class="headerlink" href="#global-variables-and-side-effects" title="Permanent link">&para;</a></h1>
+<p>Variables declared in a module are visible to any program unit that uses the module.</p>
+<div class="highlight"><pre><span></span><code><span class="k">module </span><span class="n">settings</span>
+
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">nsteps</span>
+
+<span class="k">end module </span><span class="n">settings</span>
+</code></pre></div>
+<p>Although convenient, excessive use of global variables is discouraged.</p>
+<p>Writing to global variables creates side effects and can make programs harder to understand, test, and parallelise.</p>
+<p>Constants are usually a better use case for module variables than frequently modified state.</p>
+<h3 id="module-variables-become-global-variables">Module Variables Become Global Variables<a class="headerlink" href="#module-variables-become-global-variables" title="Permanent link">&para;</a></h3>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code><span class="k">module </span><span class="n">settings</span>
+
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">nsteps</span>
+
+<span class="k">end module </span><span class="n">settings</span>
+</code></pre></div>
+<p>Any procedure that does:</p>
+<div class="highlight"><pre><span></span><code><span class="k">use </span><span class="n">settings</span>
+</code></pre></div>
+<p>can modify <code>nsteps</code>.</p>
+<hr />
+<h1 id="derived-types-in-modules"><strong>Derived Types in Modules</strong><a class="headerlink" href="#derived-types-in-modules" title="Permanent link">&para;</a></h1>
+<p>Modules are commonly used to store derived types.</p>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="k">module </span><span class="n">geometry</span>
+
+<span class="w">    </span><span class="k">implicit none</span>
+
+<span class="k">    type</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">Point</span>
+
+<span class="w">        </span><span class="kt">real</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">x</span>
+<span class="w">        </span><span class="kt">real</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">y</span>
+
+<span class="w">    </span><span class="k">end type </span><span class="n">Point</span>
+
+<span class="k">end module </span><span class="n">geometry</span>
+</code></pre></div>
+<p>This allows the type to be reused throughout a program.</p>
+<hr />
+<h1 id="module-dependencies"><strong>Module Dependencies</strong><a class="headerlink" href="#module-dependencies" title="Permanent link">&para;</a></h1>
+<p>Modules may use other modules.</p>
+<div class="highlight"><pre><span></span><code><span class="k">module </span><span class="n">physics</span>
+
+<span class="w">    </span><span class="k">use </span><span class="n">constants</span>
+
+<span class="k">end module </span><span class="n">physics</span>
+</code></pre></div>
+<p>This allows related functionality to be built in layers.</p>
+<p>A program may therefore depend on several modules, and modules may depend on one another.</p>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code>constants_module
+        ↓
+physics_module
+        ↓
+main program
+</code></pre></div>
+<hr />
+<h1 id="modules-have-no-arguments"><strong>Modules Have No Arguments</strong><a class="headerlink" href="#modules-have-no-arguments" title="Permanent link">&para;</a></h1>
+<p>Unlike functions and subroutines, modules do not have argument lists.</p>
+<p>Valid:</p>
+<div class="highlight"><pre><span></span><code><span class="k">module </span><span class="n">maths</span>
+</code></pre></div>
+<p>Invalid:</p>
+<div class="highlight"><pre><span></span><code><span class="k">module </span><span class="n">maths</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</code></pre></div>
+<p>Modules provide definitions rather than perform calculations.</p>
+<hr />
+<h1 id="modules-cannot-contain-a-main-program"><strong>Modules Cannot Contain a Main Program</strong><a class="headerlink" href="#modules-cannot-contain-a-main-program" title="Permanent link">&para;</a></h1>
+<p>A module may contain:</p>
+<ul>
+<li>variables</li>
+<li>constants</li>
+<li>derived types</li>
+<li>functions</li>
+<li>subroutines</li>
+</ul>
+<p>A module cannot contain a main program.</p>
+<p>Valid:</p>
+<div class="highlight"><pre><span></span><code><span class="k">module </span><span class="n">maths</span>
+
+<span class="k">contains</span>
+
+<span class="k">    function </span><span class="n">square</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="k">result</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+<span class="w">        </span><span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">x</span>
+<span class="w">        </span><span class="kt">real</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">y</span>
+
+<span class="w">        </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="w">    </span><span class="k">end function </span><span class="n">square</span>
+
+<span class="k">end module </span><span class="n">maths</span>
+</code></pre></div>
+<p>Invalid:</p>
+<div class="highlight"><pre><span></span><code><span class="k">module </span><span class="n">maths</span>
+
+<span class="k">program </span><span class="n">my_program</span>
+
+<span class="k">end program </span><span class="n">my_program</span>
+
+<span class="k">end module </span><span class="n">maths</span>
+</code></pre></div>
+<p>The main program must exist separately.</p>
+<p>Program units cannot overlap.</p>
+<p>A module cannot be defined inside a program.</p>
+<hr />
+<h1 id="multiple-modules"><strong>Multiple Modules</strong><a class="headerlink" href="#multiple-modules" title="Permanent link">&para;</a></h1>
+<p>A program can use multiple modules.</p>
+<div class="highlight"><pre><span></span><code><span class="k">use </span><span class="n">constants</span>
+<span class="k">use </span><span class="n">maths</span>
+<span class="k">use </span><span class="n">geometry</span>
+</code></pre></div>
+<p>This allows different parts of a large application to remain independent and organized.</p>
+<p>A source file may also contain multiple modules.</p>
+<hr />
+<h1 id="module-files-mod"><strong>Module Files (.mod)</strong><a class="headerlink" href="#module-files-mod" title="Permanent link">&para;</a></h1>
+<p>When a module is compiled, the compiler creates a file with the extension <code>.mod</code>.</p>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code><span class="k">module </span><span class="n">maths</span>
+</code></pre></div>
+<p>may generate:</p>
+<div class="highlight"><pre><span></span><code>maths.mod
+</code></pre></div>
+<p>This file contains information about:</p>
+<ul>
+<li>module procedures</li>
+<li>derived types</li>
+<li>module variables</li>
+<li>interfaces</li>
+</ul>
+<p>When another source file contains:</p>
+<div class="highlight"><pre><span></span><code><span class="k">use </span><span class="n">maths</span>
+</code></pre></div>
+<p>the compiler reads <code>maths.mod</code>.</p>
+<p>For this reason, modules must usually be compiled before files that use them.</p>
+<hr />
+<h1 id="file-structure-and-compilation"><strong>File Structure and Compilation</strong><a class="headerlink" href="#file-structure-and-compilation" title="Permanent link">&para;</a></h1>
+<p>A source file may contain multiple modules.</p>
+<p>If a file contains a main program, the main program must be the final program unit in that file.</p>
+<p>Compilation must follow module dependencies.</p>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code>constants_module
+        ↓
+physics_module
+        ↓
+main program
+</code></pre></div>
+<p>The compiler must compile <code>constants_module</code> before <code>physics_module</code>, and both before the main program.</p>
+<p>Module names and filenames do not need to match.</p>
+<hr />
+<h1 id="visibility-control">Visibility Control<a class="headerlink" href="#visibility-control" title="Permanent link">&para;</a></h1>
+<p>Modules can control which variables, types, and procedures are visible outside the module.</p>
+<p>Common attributes include:</p>
+<div class="highlight"><pre><span></span><code><span class="k">public</span>
+<span class="k">private</span>
+</code></pre></div>
+<p><code>public</code> entities may be accessed by other program units.</p>
+<p><code>private</code> entities are only accessible inside the module.</p>
+<p>Using <code>private</code> helps hide implementation details and reduces accidental misuse of data.</p>
+<h1 id="complete-example"><strong>Complete Example</strong><a class="headerlink" href="#complete-example" title="Permanent link">&para;</a></h1>
+<p>Module:</p>
+<div class="highlight"><pre><span></span><code><span class="k">module </span><span class="n">maths</span>
+
+<span class="w">    </span><span class="k">implicit none</span>
+
+<span class="k">contains</span>
+
+<span class="k">    function </span><span class="n">square</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="k">result</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+<span class="w">        </span><span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">x</span>
+<span class="w">        </span><span class="kt">real</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">y</span>
+
+<span class="w">        </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="w">    </span><span class="k">end function </span><span class="n">square</span>
+
+<span class="k">end module </span><span class="n">maths</span>
+</code></pre></div>
+<p>Program:</p>
+<div class="highlight"><pre><span></span><code><span class="k">program </span><span class="n">example</span>
+
+<span class="w">    </span><span class="k">use </span><span class="n">maths</span>
+
+<span class="w">    </span><span class="k">implicit none</span>
+
+<span class="k">    </span><span class="kt">real</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">a</span>
+
+<span class="w">    </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">square</span><span class="p">(</span><span class="mf">4.0</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">a</span>
+
+<span class="k">end program </span><span class="n">example</span>
+</code></pre></div>
+<p>Output:</p>
+<div class="highlight"><pre><span></span><code>16.0
+</code></pre></div>
+<h3 id="how-it-works"><strong>How It Works</strong><a class="headerlink" href="#how-it-works" title="Permanent link">&para;</a></h3>
+<ol>
+<li>The module <code>maths</code> defines the function <code>square</code>.</li>
+<li>The program imports the module using <code>use maths</code>.</li>
+<li>The function becomes available inside the program.</li>
+<li>The function is called.</li>
+<li>The result is returned and printed.</li>
+</ol>
+<hr />
+<h1 id="summary"><strong>Summary</strong><a class="headerlink" href="#summary" title="Permanent link">&para;</a></h1>
+<table>
+<thead>
+<tr>
+<th>Statement</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>module name</code></td>
+<td>Begin a module</td>
+</tr>
+<tr>
+<td><code>contains</code></td>
+<td>Separate declarations from procedures</td>
+</tr>
+<tr>
+<td><code>end module name</code></td>
+<td>End a module</td>
+</tr>
+<tr>
+<td><code>use module_name</code></td>
+<td>Import a module</td>
+</tr>
+<tr>
+<td>Module procedure</td>
+<td>Function or subroutine inside a module</td>
+</tr>
+<tr>
+<td>Specification part</td>
+<td>Variables, constants, types, interfaces</td>
+</tr>
+<tr>
+<td>Procedure part</td>
+<td>Functions and subroutines</td>
+</tr>
+<tr>
+<td>Internal procedure</td>
+<td>Procedure inside another procedure</td>
+</tr>
+<tr>
+<td>External procedure</td>
+<td>Procedure outside a module</td>
+</tr>
+<tr>
+<td><code>.mod</code> file</td>
+<td>Compiler-generated module information</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1 id="key-idea"><strong>Key Idea</strong><a class="headerlink" href="#key-idea" title="Permanent link">&para;</a></h1>
+<p>Modules are the primary tool for organizing modern Fortran programs.</p>
+<p>They allow related variables, constants, derived types, functions, and subroutines to be grouped together and reused throughout a program.</p>
+<p>Most large Fortran applications consist of a small main program and a collection of modules containing the actual functionality.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

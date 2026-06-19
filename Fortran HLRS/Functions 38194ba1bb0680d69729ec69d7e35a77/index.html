@@ -1,0 +1,965 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://eamonocathain.github.io/FortranNotes/Fortran%20HLRS/Functions%2038194ba1bb0680d69729ec69d7e35a77/">
+      
+      
+        <link rel="prev" href="../Arrays%2038094ba1bb068047a6b8d5492b19afb7/">
+      
+      
+        <link rel="next" href="../Subroutines%2038194ba1bb0680bf85edc8bae2a3166d/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Functions - Fortran HLRS Notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#functions" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Fortran HLRS Notes" class="md-header__button md-logo" aria-label="Fortran HLRS Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Fortran HLRS Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Functions
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Fortran HLRS Notes" class="md-nav__button md-logo" aria-label="Fortran HLRS Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Fortran HLRS Notes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Notes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Notes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Arithmetic%20Basics%2038094ba1bb068058b949c5f878eaa564/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arithmetic Basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Declaration%20of%20Variables%2038094ba1bb06801ab840c3a5f06aaa46/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Declaration of Variables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../If%20and%20Else%2038094ba1bb068028b475fa54f910cb48/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    If and Else
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Loops%2038094ba1bb06804ab400ccb6252c4b0a/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Loops
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Arrays%2038094ba1bb068047a6b8d5492b19afb7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arrays
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Subroutines%2038194ba1bb0680bf85edc8bae2a3166d/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Subroutines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Modules%2038194ba1bb0680daaa3bedcff442c0df/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="functions">Functions<a class="headerlink" href="#functions" title="Permanent link">&para;</a></h1>
+<h1 id="functions_1"><strong>Functions</strong><a class="headerlink" href="#functions_1" title="Permanent link">&para;</a></h1>
+<p>A <strong>function</strong> is a procedure that takes one or more inputs, performs a calculation, and returns a <strong>single value</strong>.</p>
+<p>Functions are useful for representing mathematical relationships and calculations that can be reused throughout a program.</p>
+<p>Unlike subroutines, functions are called as part of an expression and return a value directly.</p>
+<hr />
+<h1 id="basic-structure"><strong>Basic Structure</strong><a class="headerlink" href="#basic-structure" title="Permanent link">&para;</a></h1>
+<p>General form:</p>
+<div class="highlight"><pre><span></span><code><span class="k">function </span><span class="n">function_name</span><span class="p">(</span><span class="n">argument_list</span><span class="p">)</span><span class="w"> </span><span class="k">result</span><span class="p">(</span><span class="n">result_name</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">implicit none</span>
+
+<span class="w">    </span><span class="c">! declarations</span>
+
+<span class="w">    </span><span class="c">! calculations</span>
+
+<span class="w">    </span><span class="n">result_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...</span>
+
+<span class="k">end function </span><span class="n">function_name</span>
+</code></pre></div>
+<p>A function is used like a variable:</p>
+<div class="highlight"><pre><span></span><code><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">function_name</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h1 id="example"><strong>Example</strong><a class="headerlink" href="#example" title="Permanent link">&para;</a></h1>
+<div class="highlight"><pre><span></span><code><span class="k">function </span><span class="n">square</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="k">result</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">implicit none</span>
+
+<span class="k">    </span><span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">x</span>
+<span class="w">    </span><span class="kt">real</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">y</span>
+
+<span class="w">    </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="k">end function </span><span class="n">square</span>
+</code></pre></div>
+<p>Called as:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">real</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">a</span>
+
+<span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">square</span><span class="p">(</span><span class="mf">4.0</span><span class="p">)</span>
+
+<span class="k">print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">a</span>
+</code></pre></div>
+<p>Output:</p>
+<div class="highlight"><pre><span></span><code>16.0
+</code></pre></div>
+<hr />
+<h1 id="arguments"><strong>Arguments</strong><a class="headerlink" href="#arguments" title="Permanent link">&para;</a></h1>
+<p>Functions receive information through an <strong>argument list</strong>.</p>
+<div class="highlight"><pre><span></span><code><span class="k">function </span><span class="n">area</span><span class="p">(</span><span class="n">length</span><span class="p">,</span><span class="w"> </span><span class="n">width</span><span class="p">)</span><span class="w"> </span><span class="k">result</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+</code></pre></div>
+<p>The variables inside the function are called <strong>dummy arguments</strong>.</p>
+<div class="highlight"><pre><span></span><code><span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">length</span>
+<span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">width</span>
+</code></pre></div>
+<p>The variables used when calling the function are called <strong>actual arguments</strong>.</p>
+<div class="highlight"><pre><span></span><code><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">area</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span>
+</code></pre></div>
+<p>The names do not need to match.</p>
+<div class="highlight"><pre><span></span><code>length ↔ x
+width  ↔ y
+</code></pre></div>
+<p>Arguments are matched by position.</p>
+<hr />
+<h1 id="return-values"><strong>Return Values</strong><a class="headerlink" href="#return-values" title="Permanent link">&para;</a></h1>
+<p>A function returns a single value.</p>
+<p>The modern approach uses the <code>result()</code> keyword.</p>
+<div class="highlight"><pre><span></span><code><span class="k">function </span><span class="n">square</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="k">result</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+<span class="w">    </span><span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">x</span>
+<span class="w">    </span><span class="kt">real</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">y</span>
+
+<span class="w">    </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="k">end function </span><span class="n">square</span>
+</code></pre></div>
+<p>The returned value is stored in the result variable.</p>
+<hr />
+<h1 id="alternative-syntax"><strong>Alternative Syntax</strong><a class="headerlink" href="#alternative-syntax" title="Permanent link">&para;</a></h1>
+<p>Functions can also return a value using the function name itself.</p>
+<div class="highlight"><pre><span></span><code><span class="kt">real </span><span class="k">function </span><span class="n">square</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="w">    </span><span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">x</span>
+
+<span class="w">    </span><span class="n">square</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="k">end function </span><span class="n">square</span>
+</code></pre></div>
+<p>This older style is still valid but is less commonly used in modern Fortran.</p>
+<p>The <code>result()</code> syntax is generally preferred because it is clearer.</p>
+<hr />
+<h1 id="intent-attributes"><strong>Intent Attributes</strong><a class="headerlink" href="#intent-attributes" title="Permanent link">&para;</a></h1>
+<p>Function arguments should normally be declared with:</p>
+<div class="highlight"><pre><span></span><code><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span>
+</code></pre></div>
+<p>because functions typically use inputs without modifying them.</p>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="k">function </span><span class="n">cube</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="k">result</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+<span class="w">    </span><span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">x</span>
+<span class="w">    </span><span class="kt">real</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">y</span>
+
+<span class="w">    </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="o">**</span><span class="mi">3</span>
+
+<span class="k">end function </span><span class="n">cube</span>
+</code></pre></div>
+<p>Attempting to modify an <code>intent(in)</code> argument will generate a compiler error.</p>
+<hr />
+<h1 id="variable-scope"><strong>Variable Scope</strong><a class="headerlink" href="#variable-scope" title="Permanent link">&para;</a></h1>
+<p>Variables declared inside a function exist only inside that function.</p>
+<div class="highlight"><pre><span></span><code><span class="k">function </span><span class="n">square</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="k">result</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+<span class="w">    </span><span class="kt">real</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">y</span>
+<span class="w">    </span><span class="kt">real</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">temp</span>
+
+<span class="w">    </span><span class="n">temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="o">**</span><span class="mi">2</span>
+<span class="w">    </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">temp</span>
+
+<span class="k">end function </span><span class="n">square</span>
+</code></pre></div>
+<p>The variable <code>temp</code> is not accessible outside the function.</p>
+<p>Likewise, variables from the calling program are not automatically available inside the function unless:</p>
+<ul>
+<li>they are passed as arguments, or</li>
+<li>they are imported from a module.</li>
+</ul>
+<hr />
+<h1 id="internal-functions"><strong>Internal Functions</strong><a class="headerlink" href="#internal-functions" title="Permanent link">&para;</a></h1>
+<p>Functions can be defined inside a program using <code>contains</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="k">program </span><span class="n">example</span>
+
+<span class="w">    </span><span class="k">implicit none</span>
+
+<span class="k">    </span><span class="kt">real</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">x</span>
+
+<span class="w">    </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">square</span><span class="p">(</span><span class="mf">3.0</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">x</span>
+
+<span class="k">contains</span>
+
+<span class="k">    function </span><span class="n">square</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="k">result</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+<span class="w">        </span><span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">n</span>
+<span class="w">        </span><span class="kt">real</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">y</span>
+
+<span class="w">        </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="w">    </span><span class="k">end function </span><span class="n">square</span>
+
+<span class="k">end program </span><span class="n">example</span>
+</code></pre></div>
+<p>Internal functions can only be used within the program that contains them.</p>
+<hr />
+<h1 id="module-functions"><strong>Module Functions</strong><a class="headerlink" href="#module-functions" title="Permanent link">&para;</a></h1>
+<p>For larger programs, functions are often placed inside modules.</p>
+<div class="highlight"><pre><span></span><code><span class="k">module </span><span class="n">maths</span>
+
+<span class="k">contains</span>
+
+<span class="k">    function </span><span class="n">square</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="k">result</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+<span class="w">        </span><span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">x</span>
+<span class="w">        </span><span class="kt">real</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">y</span>
+
+<span class="w">        </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="w">    </span><span class="k">end function </span><span class="n">square</span>
+
+<span class="k">end module </span><span class="n">maths</span>
+</code></pre></div>
+<p>Used as:</p>
+<div class="highlight"><pre><span></span><code><span class="k">use </span><span class="n">maths</span>
+
+<span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">square</span><span class="p">(</span><span class="mf">4.0</span><span class="p">)</span>
+</code></pre></div>
+<p>This allows functions to be reused across multiple programs.</p>
+<hr />
+<h1 id="functions-vs-subroutines"><strong>Functions vs Subroutines</strong><a class="headerlink" href="#functions-vs-subroutines" title="Permanent link">&para;</a></h1>
+<table>
+<thead>
+<tr>
+<th><strong>Feature</strong></th>
+<th><strong>Function</strong></th>
+<th><strong>Subroutine</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Returns a value</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Called using</td>
+<td><code>y = f(x)</code></td>
+<td><code>call procedure(...)</code></td>
+</tr>
+<tr>
+<td>Typical use</td>
+<td>Equations and calculations</td>
+<td>Tasks and updates</td>
+</tr>
+<tr>
+<td>Number of outputs</td>
+<td>One</td>
+<td>Zero, one, or many</td>
+</tr>
+</tbody>
+</table>
+<p>Function:</p>
+<div class="highlight"><pre><span></span><code><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">square</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</code></pre></div>
+<p>Subroutine:</p>
+<div class="highlight"><pre><span></span><code><span class="k">call </span><span class="n">square</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h1 id="when-to-use-functions"><strong>When to Use Functions</strong><a class="headerlink" href="#when-to-use-functions" title="Permanent link">&para;</a></h1>
+<p>Functions are best suited for:</p>
+<ul>
+<li>mathematical equations</li>
+<li>unit conversions</li>
+<li>reusable calculations</li>
+<li>relationships that produce a single result</li>
+</ul>
+<p>Examples:</p>
+<div class="highlight"><pre><span></span><code><span class="n">density</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mass</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">volume</span>
+
+<span class="n">area</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rectangle_area</span><span class="p">(</span><span class="n">length</span><span class="p">,</span><span class="w"> </span><span class="n">width</span><span class="p">)</span>
+
+<span class="n">temperature_c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fahrenheit_to_celsius</span><span class="p">(</span><span class="n">temperature_f</span><span class="p">)</span>
+</code></pre></div>
+<p>If a procedure naturally returns one value, it is often a good candidate for a function.</p>
+<hr />
+<h1 id="complete-example"><strong>Complete Example</strong><a class="headerlink" href="#complete-example" title="Permanent link">&para;</a></h1>
+<div class="highlight"><pre><span></span><code><span class="k">program </span><span class="n">demo</span>
+
+<span class="w">    </span><span class="k">implicit none</span>
+
+<span class="k">    </span><span class="kt">real</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">radius</span>
+<span class="w">    </span><span class="kt">real</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">area</span>
+
+<span class="w">    </span><span class="n">radius</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2.0</span>
+
+<span class="w">    </span><span class="n">area</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">circle_area</span><span class="p">(</span><span class="n">radius</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Area =&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">area</span>
+
+<span class="k">contains</span>
+
+<span class="k">    function </span><span class="n">circle_area</span><span class="p">(</span><span class="n">r</span><span class="p">)</span><span class="w"> </span><span class="k">result</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+
+<span class="w">        </span><span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">r</span>
+<span class="w">        </span><span class="kt">real</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">A</span>
+
+<span class="w">        </span><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3.14159</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">r</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="w">    </span><span class="k">end function </span><span class="n">circle_area</span>
+
+<span class="k">end program </span><span class="n">demo</span>
+</code></pre></div>
+<p>Output:</p>
+<div class="highlight"><pre><span></span><code>Area = 12.5664
+</code></pre></div>
+<h3 id="how-it-works"><strong>How It Works</strong><a class="headerlink" href="#how-it-works" title="Permanent link">&para;</a></h3>
+<ol>
+<li>The program assigns a value to <code>radius</code>.</li>
+<li>The function <code>circle_area</code> is called.</li>
+<li>The function computes the area.</li>
+<li>The result is returned through the variable <code>A</code>.</li>
+<li>The returned value is assigned to <code>area</code>.</li>
+<li>The program prints the result.</li>
+</ol>
+<hr />
+<p>I’d make it much tighter and focused on the practical rule students need to remember:</p>
+<h1 id="function-evaluation-order-and-side-effects"><strong>Function Evaluation Order and Side Effects</strong><a class="headerlink" href="#function-evaluation-order-and-side-effects" title="Permanent link">&para;</a></h1>
+<p>Functions should behave like mathematical functions: they should compute a result without unexpectedly changing other variables.</p>
+<hr />
+<h2 id="no-guaranteed-evaluation-order"><strong>No Guaranteed Evaluation Order</strong><a class="headerlink" href="#no-guaranteed-evaluation-order" title="Permanent link">&para;</a></h2>
+<p>In Fortran, the order in which functions are evaluated within an expression is not defined.</p>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fun1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">fun2</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</code></pre></div>
+<p>The compiler may evaluate either function first.</p>
+<p>Therefore, functions should not modify variables that affect other functions appearing in the same expression.</p>
+<hr />
+<h2 id="logical-expressions"><strong>Logical Expressions</strong><a class="headerlink" href="#logical-expressions" title="Permanent link">&para;</a></h2>
+<p>The same rule applies to logical expressions.</p>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">associated</span><span class="p">(</span><span class="n">ptr</span><span class="p">)</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w"> </span><span class="n">ptr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="k">end if</span>
+</code></pre></div>
+<p>The compiler is not required to evaluate <code>associated(ptr)</code> before <code>ptr == 1</code>.</p>
+<p>A safer approach is:</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">associated</span><span class="p">(</span><span class="n">ptr</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+
+<span class="k">    if</span><span class="w"> </span><span class="p">(</span><span class="n">ptr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="w">        </span><span class="p">...</span>
+<span class="w">    </span><span class="k">end if</span>
+
+<span class="k">end if</span>
+</code></pre></div>
+<hr />
+<h2 id="avoid-side-effects"><strong>Avoid Side Effects</strong><a class="headerlink" href="#avoid-side-effects" title="Permanent link">&para;</a></h2>
+<p>A <strong>side effect</strong> occurs when a function changes something other than its returned value.</p>
+<p>Examples include:</p>
+<ul>
+<li>modifying global variables</li>
+<li>modifying module variables</li>
+<li>modifying its arguments</li>
+</ul>
+<p>Functions with side effects can produce unexpected behaviour when compiler optimizations change evaluation order.</p>
+<hr />
+<h2 id="best-practice"><strong>Best Practice</strong><a class="headerlink" href="#best-practice" title="Permanent link">&para;</a></h2>
+<p>Functions should:</p>
+<ul>
+<li>depend only on their input arguments</li>
+<li>return a single result</li>
+<li>avoid modifying external variables</li>
+<li>avoid hidden side effects</li>
+</ul>
+<p>This makes code easier to understand, test, and optimize.</p>
+<p>This version is probably closer to the level of the rest of your notes: enough to teach the rule without diving into compiler-lawyer details.</p>
+<h1 id="summary"><strong>Summary</strong><a class="headerlink" href="#summary" title="Permanent link">&para;</a></h1>
+<table>
+<thead>
+<tr>
+<th><strong>Statement</strong></th>
+<th><strong>Purpose</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>function name(...)</code></td>
+<td>Begin a function</td>
+</tr>
+<tr>
+<td><code>result(name)</code></td>
+<td>Specify the return variable</td>
+</tr>
+<tr>
+<td><code>end function name</code></td>
+<td>End a function</td>
+</tr>
+<tr>
+<td><code>intent(in)</code></td>
+<td>Declare an input argument</td>
+</tr>
+<tr>
+<td><code>contains</code></td>
+<td>Begin internal procedures</td>
+</tr>
+<tr>
+<td><code>y = function(...)</code></td>
+<td>Call a function</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1 id="key-idea"><strong>Key Idea</strong><a class="headerlink" href="#key-idea" title="Permanent link">&para;</a></h1>
+<p>A function is a reusable block of code that performs a calculation and returns a single value.</p>
+<p>Values are passed into the function through arguments, the calculation is performed, and the result is returned to the calling program.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
