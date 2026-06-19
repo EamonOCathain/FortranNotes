@@ -1,0 +1,24 @@
+site_name: Fortran HLRS Notes
+site_url: https://eamonocathain.github.io/FortranNotes/
+
+theme:
+  name: material
+
+nav:
+  - Home: index.md
+  - Notes:
+      - Arithmetic Basics: "Fortran HLRS/Arithmetic Basics 38094ba1bb068058b949c5f878eaa564.md"
+      - Declaration of Variables: "Fortran HLRS/Declaration of Variables 38094ba1bb06801ab840c3a5f06aaa46.md"
+      - If and Else: "Fortran HLRS/If and Else 38094ba1bb068028b475fa54f910cb48.md"
+      - Loops: "Fortran HLRS/Loops 38094ba1bb06804ab400ccb6252c4b0a.md"
+      - Arrays: "Fortran HLRS/Arrays 38094ba1bb068047a6b8d5492b19afb7.md"
+      - Functions: "Fortran HLRS/Functions 38194ba1bb0680d69729ec69d7e35a77.md"
+      - Subroutines: "Fortran HLRS/Subroutines 38194ba1bb0680bf85edc8bae2a3166d.md"
+      - Modules: "Fortran HLRS/Modules 38194ba1bb0680daaa3bedcff442c0df.md"
+
+markdown_extensions:
+  - admonition
+  - toc:
+      permalink: true
+  - pymdownx.highlight
+  - pymdownx.superfences
